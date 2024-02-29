@@ -1,12 +1,12 @@
-import { View, Text } from "react-native";
-import { IconContainer, MainContainer, Title, TitleContainer } from "./styles"
-import {useFonts} from 'expo-font'
+import { ImageSourcePropType } from "react-native";
+import { Icon, IconContainer, MainContainer, Title, TitleContainer } from "./styles"
 
 interface IHeaderBarWithSettingsIconProps {
     title: string;
+    icon: ImageSourcePropType;
 }
 
-const HeaderBarWithSettingsIcon: React.FC<IHeaderBarWithSettingsIconProps> = ({title}) =>{
+const HeaderBarWithSettingsIcon: React.FC<IHeaderBarWithSettingsIconProps> = ({title, icon}) =>{
 
     return(
         <MainContainer>
@@ -14,7 +14,7 @@ const HeaderBarWithSettingsIcon: React.FC<IHeaderBarWithSettingsIconProps> = ({t
                <Title>{title}</Title>
             </TitleContainer>
             <IconContainer>
-                
+                <Icon source={icon}/>
             </IconContainer>
         </MainContainer>
     )

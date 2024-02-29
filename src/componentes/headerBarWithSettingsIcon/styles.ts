@@ -6,24 +6,30 @@ export const MainContainer = styled.View`
     flex-direction: row;
     align-items: center;
     background-color: #FFFFFF;
-`
+`   
 
 export const TitleContainer = styled.View`
     flex: 1;
     height: 32px;
-    background-color: aquamarine;
     margin-left: 16px;
+    justify-content: center;
 `
 
 export const IconContainer = styled.View`
     width: 48px;
     height: 48px;
     margin-right: 8px;
-    background-color: black;
+    align-items: center;
+    justify-content: center;
 `
 
 export const Title = styled.Text`
     font-family: "Roboto-Medium";
     font-size: 20px;
     color: #000000DE;
+`
+
+export const Icon = styled.Image`
+    width: 24px;
+    height: 24px;
 `
