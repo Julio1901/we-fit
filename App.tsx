@@ -10,7 +10,9 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf")
+    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+    "Inter-Regular-400": require("./assets/fonts/Inter-Regular-400.ttf"),
+    "Inter-Bold-700": require("./assets/fonts/Inter-Bold-700.ttf"),
 })
 
 if(!fontsLoaded){

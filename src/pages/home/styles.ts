@@ -4,5 +4,5 @@ import styled from "styled-components/native";
 export const MainContainer = styled(SafeAreaView)`
     flex: 1;
     flex-direction: column; 
-    background-color: brown;
+    background-color: #F6F6F5;
 `
