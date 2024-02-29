@@ -6,7 +6,7 @@ interface IHeaderBarWithSettingsIconProps {
     icon: ImageSourcePropType;
 }
 
-const HeaderBarWithSettingsIcon: React.FC<IHeaderBarWithSettingsIconProps> = ({title, icon}) =>{
+const HeaderBarWithIcon: React.FC<IHeaderBarWithSettingsIconProps> = ({title, icon}) =>{
 
     return(
         <MainContainer>
@@ -20,4 +20,4 @@ const HeaderBarWithSettingsIcon: React.FC<IHeaderBarWithSettingsIconProps> = ({t
     )
 }
 
-export default HeaderBarWithSettingsIcon
+export default HeaderBarWithIcon

@@ -3,7 +3,7 @@ import { Text } from "react-native"
 import { useNavigation, ParamListBase } from "@react-navigation/native"
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { MainContainer } from "./styles";
-import HeaderBarWithSettingsIcon from "../../componentes/headerBarWithSettingsIcon/HeaderBarWithSettingsIcon";
+import HeaderBarWithIcon from "../../componentes/headerBarWithIcon/HeaderBarWithSettingsIcon";
 
 const HomeScreen : React.FC = () => {
     
@@ -16,7 +16,7 @@ const HomeScreen : React.FC = () => {
 
     return (
         <MainContainer>
-            <HeaderBarWithSettingsIcon title="WeFit" icon={settingsIcon}/>
+            <HeaderBarWithIcon title="WeFit" icon={settingsIcon}/>
                <Text>Component created HOME</Text>
                 <Button title="Go to favorites Screen" onPress={handleWithGoToFavoritesClick}/>
         </MainContainer>
