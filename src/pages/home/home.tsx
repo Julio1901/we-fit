@@ -16,7 +16,7 @@ const HomeScreen : React.FC = () => {
 
     return (
         <MainContainer>
-            <HeaderBarWithSettingsIcon/>
+            <HeaderBarWithSettingsIcon title="WeFit"/>
                <Text>Component created HOME</Text>
                 <Button title="Go to favorites Screen" onPress={handleWithGoToFavoritesClick}/>
         </MainContainer>

@@ -1,24 +1,17 @@
+import { View, Text } from "react-native";
 import { IconContainer, MainContainer, Title, TitleContainer } from "./styles"
 import {useFonts} from 'expo-font'
-import { Text } from "react-native"
 
+interface IHeaderBarWithSettingsIconProps {
+    title: string;
+}
 
-const HeaderBarWithSettingsIcon: React.FC = () =>{
-
-    const [fontsLoaded] = useFonts({
-        "Roboto-Medium": require("../../../assets/fonts/Roboto-Medium.ttf")
-    })
-
-    if(!fontsLoaded){
-        //TODO: Make an loader here
-        return undefined
-    }
-
+const HeaderBarWithSettingsIcon: React.FC<IHeaderBarWithSettingsIconProps> = ({title}) =>{
 
     return(
         <MainContainer>
             <TitleContainer>
-               <Title>WeFit</Title>
+               <Title>{title}</Title>
             </TitleContainer>
             <IconContainer>
                 
