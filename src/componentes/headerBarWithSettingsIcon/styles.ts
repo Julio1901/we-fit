@@ -23,7 +23,7 @@ export const IconContainer = styled.View`
 `
 
 export const Title = styled.Text`
-    
+    font-family: "Roboto-Medium";
     font-size: 20px;
     color: #000000DE;
 `
