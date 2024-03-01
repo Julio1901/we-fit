@@ -31,7 +31,6 @@ export const HeaderContainer = styled.View`
     margin-left: 16px;
     margin-right: 16px;
     align-items: center;
-    background-color: blue;
 `
 
 export const TitleContainer = styled.View`
@@ -40,7 +39,6 @@ export const TitleContainer = styled.View`
     flex-direction: row;
     margin-right: auto;
     flex: 1;
-    background-color: bisque;
 `
 
 export const OwnerTitle = styled.Text`
@@ -92,7 +90,6 @@ export const BottomContainer = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: blueviolet;
 `
 
 export const FavoriteButton = styled.TouchableOpacity`
@@ -121,7 +118,6 @@ export const StarsCounterContainer = styled.View`
     height: 20px;
     flex-direction: row;
     align-items: center;
-    background-color: aqua;
 `
 
 export const StarsCounterText = styled.Text `
@@ -135,7 +131,6 @@ export const LanguageContainer = styled.View`
     height: 15px;
     flex-direction: row;
     align-items: center;
-    background-color: chartreuse;
 `
 
 export const LanguageIcon = styled.Image`
