@@ -13,6 +13,7 @@ export default function App() {
     "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
     "Inter-Regular-400": require("./assets/fonts/Inter-Regular-400.ttf"),
     "Inter-Bold-700": require("./assets/fonts/Inter-Bold-700.ttf"),
+    "Roboto-Regular-400": require("./assets/fonts/Roboto-Regular-400.ttf"),
 })
 
 if(!fontsLoaded){

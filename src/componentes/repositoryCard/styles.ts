@@ -11,15 +11,15 @@ export const MainContainer = styled.View`
 
     ${Platform.select({
     ios: `
-      shadow-color: #000;
-      shadow-offset: 0px 2px;
-      shadow-opacity: 0.2;
+      shadow-color: #000000;
+      shadow-offset: 0px 1px;
+      shadow-opacity: 0.25;
       shadow-radius: 4px;
     `,
     android: `
       elevation: 4;
-      shadow-color: #000;
-      shadow-opacity: 0.2;
+      shadow-color: #000000;
+      shadow-opacity: 0.25;
     `,
   })}
 `
