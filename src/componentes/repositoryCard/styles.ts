@@ -61,3 +61,55 @@ export const OwnerImage = styled.Image`
     width: 29px;
     height: 29px;
 `
+
+export const Divider = styled.View`
+    height: 1px;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: #DADADA;
+`
+
+export const DescriptionContainer = styled.View`
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+`
+
+export const DescriptionText = styled.Text`
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    font-size: 12px;
+    color: #9A9A9A;
+`
+
+export const BottomContainer = styled.View`
+    height: 36px;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: blueviolet;
+`
+
+export const FavoriteButton = styled.TouchableOpacity`
+    width: 103px;
+    height: 36px;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 4px;
+    background-color: #FAF3DC;
+`
+
+export const FavoriteButtonIcon = styled.Image`
+    width: 16.67px;
+    height: 16.67px;
+    margin-left: 11.67px;
+`
+
+export const FavoriteButtonTitle = styled.Text`
+    font-size: 12px;
+    font-family: "Inter-Bold-700";
+    margin-left: 10px;
+    color: #FFD02C;
+`
