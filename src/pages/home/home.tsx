@@ -18,8 +18,8 @@ const HomeScreen : React.FC = () => {
     return (
         <MainContainer>
             <HeaderBarWithIcon title="WeFit" icon={settingsIcon}/>
-                <RepositoryCard/>
-                <RepositoryCard/>
+                <RepositoryCard showFavoriteButton={true}/>
+                <RepositoryCard showFavoriteButton={false}/>
                 <View style={{marginTop: 30}}><Button title="Go to favorites Screen" onPress={handleWithGoToFavoritesClick}/></View>
         </MainContainer>
     )
