@@ -1,4 +1,4 @@
-import { BottomContainer, DescriptionContainer, DescriptionText, Divider, FavoriteButton, StarIcon, FavoriteButtonTitle, HeaderContainer, MainContainer, OwnerImage, OwnerTitle, StarsCounterContainer, TitleContainer, TitleName, StarsCounterText } from "./styles";
+import { BottomContainer, DescriptionContainer, DescriptionText, Divider, FavoriteButton, StarIcon, FavoriteButtonTitle, HeaderContainer, MainContainer, OwnerImage, OwnerTitle, StarsCounterContainer, TitleContainer, TitleName, StarsCounterText, LanguageContainer, LanguageIcon, LanguageTitle } from "./styles";
 
 const RepositoryCard : React.FC = () => {
     return(
@@ -21,6 +21,10 @@ const RepositoryCard : React.FC = () => {
                     <StarIcon source={require("../../../assets/icons/icon-star.png")} style={{marginLeft:1.67}}/>
                     <StarsCounterText>0</StarsCounterText>
                 </StarsCounterContainer>
+                <LanguageContainer>
+                    <LanguageIcon source={require("../../../assets/icons/icon-red-circle.png")}/>
+                    <LanguageTitle>TypeScript</LanguageTitle>
+                </LanguageContainer>
             </BottomContainer>
         </MainContainer>
     )

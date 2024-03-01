@@ -91,6 +91,7 @@ export const BottomContainer = styled.View`
     margin-right: 16px;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     background-color: blueviolet;
 `
 
@@ -123,9 +124,28 @@ export const StarsCounterContainer = styled.View`
     background-color: aqua;
 `
 
-export const StarsCounterText = styled.Text`
+export const StarsCounterText = styled.Text `
     font-size: 12px;
     font-family: "Inter-Regular-400";
     margin-left: auto;
+    color: #9A9A9A;
+`
+
+export const LanguageContainer = styled.View`
+    height: 15px;
+    flex-direction: row;
+    align-items: center;
+    background-color: chartreuse;
+`
+
+export const LanguageIcon = styled.Image`
+    width: 8px;
+    height: 8px;
+`
+
+export const LanguageTitle = styled.Text`
+    font-size: 12px;
+    font-family: "Inter-Regular-400";
+    margin-left: 6px;
     color: #9A9A9A;
 `
