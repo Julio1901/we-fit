@@ -89,6 +89,8 @@ export const BottomContainer = styled.View`
     margin-top: 16px;
     margin-left: 16px;
     margin-right: 16px;
+    flex-direction: row;
+    align-items: center;
     background-color: blueviolet;
 `
 
@@ -101,10 +103,9 @@ export const FavoriteButton = styled.TouchableOpacity`
     background-color: #FAF3DC;
 `
 
-export const FavoriteButtonIcon = styled.Image`
+export const StarIcon = styled.Image`
     width: 16.67px;
     height: 16.67px;
-    margin-left: 11.67px;
 `
 
 export const FavoriteButtonTitle = styled.Text`
@@ -112,4 +113,19 @@ export const FavoriteButtonTitle = styled.Text`
     font-family: "Inter-Bold-700";
     margin-left: 10px;
     color: #FFD02C;
+`
+
+export const StarsCounterContainer = styled.View`
+    width: 34px;
+    height: 20px;
+    flex-direction: row;
+    align-items: center;
+    background-color: aqua;
+`
+
+export const StarsCounterText = styled.Text`
+    font-size: 12px;
+    font-family: "Inter-Regular-400";
+    margin-left: auto;
+    color: #9A9A9A;
 `

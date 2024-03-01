@@ -1,4 +1,4 @@
-import { BottomContainer, DescriptionContainer, DescriptionText, Divider, FavoriteButton, FavoriteButtonIcon, FavoriteButtonTitle, HeaderContainer, MainContainer, OwnerImage, OwnerTitle, TitleContainer, TitleName } from "./styles";
+import { BottomContainer, DescriptionContainer, DescriptionText, Divider, FavoriteButton, StarIcon, FavoriteButtonTitle, HeaderContainer, MainContainer, OwnerImage, OwnerTitle, StarsCounterContainer, TitleContainer, TitleName, StarsCounterText } from "./styles";
 
 const RepositoryCard : React.FC = () => {
     return(
@@ -14,9 +14,13 @@ const RepositoryCard : React.FC = () => {
             <DescriptionText numberOfLines={2}>Yarn Workspaces Monorepo support for Create-React-App / React-Scripts.</DescriptionText>
             <BottomContainer>
                 <FavoriteButton>
-                    <FavoriteButtonIcon source={require("../../../assets/icons/icon-star.png")}/>
+                    <StarIcon source={require("../../../assets/icons/icon-star.png")} style={{marginLeft:11.67}}/>
                     <FavoriteButtonTitle>Favoritar</FavoriteButtonTitle>
                 </FavoriteButton>
+                <StarsCounterContainer>
+                    <StarIcon source={require("../../../assets/icons/icon-star.png")} style={{marginLeft:1.67}}/>
+                    <StarsCounterText>0</StarsCounterText>
+                </StarsCounterContainer>
             </BottomContainer>
         </MainContainer>
     )
