@@ -58,6 +58,7 @@ export const TitleName = styled.Text`
 export const OwnerImage = styled.Image`
     width: 29px;
     height: 29px;
+    border-radius: 50px;
 `
 
 export const Divider = styled.View`

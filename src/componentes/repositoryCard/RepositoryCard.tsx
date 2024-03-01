@@ -1,10 +1,16 @@
+import { useEffect, useState } from "react";
 import { BottomContainer, DescriptionText, Divider, FavoriteButton, StarIcon, FavoriteButtonTitle, HeaderContainer, MainContainer, OwnerImage, OwnerTitle, StarsCounterContainer, TitleContainer, TitleName, StarsCounterText, LanguageContainer, LanguageIcon, LanguageTitle } from "./styles";
+
 
 interface IRepositoryCardProps {
     showFavoriteButton : boolean;
+    cardImageUri: string 
 }
 
-const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton}) => {
+const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, cardImageUri}) => {
+
+    const [imageError, setImageError] = useState(false)
+
     return(
         <MainContainer>
             <HeaderContainer>
@@ -12,7 +18,13 @@ const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton}) =
                     <OwnerTitle numberOfLines={1}>appswefit</OwnerTitle>
                     <TitleName numberOfLines={1}>/create-react-appaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbb</TitleName>
                 </TitleContainer>
-                <OwnerImage source={require("../../../assets/icons/icon-example-profile.png")}/>
+                { !imageError ? (
+                    <OwnerImage source={{uri: cardImageUri}} onError={() => {setImageError(true)}}/>
+                ) : (
+                    <OwnerImage source={require("../../../assets/images/image-profile-not-found.png")}/>
+                )
+                }
+              
             </HeaderContainer>
             <Divider/>
             <DescriptionText numberOfLines={2}>Yarn Workspaces Monorepo support for Create-React-App / React-Scripts.</DescriptionText>

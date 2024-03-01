@@ -1,5 +1,4 @@
 import { Button, View } from "react-native"
-import { Text } from "react-native"
 import { useNavigation, ParamListBase } from "@react-navigation/native"
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { MainContainer } from "./styles";
@@ -18,8 +17,8 @@ const HomeScreen : React.FC = () => {
     return (
         <MainContainer>
             <HeaderBarWithIcon title="WeFit" icon={settingsIcon}/>
-                <RepositoryCard showFavoriteButton={true}/>
-                <RepositoryCard showFavoriteButton={false}/>
+                <RepositoryCard showFavoriteButton={true} cardImageUri="https://avatars.githubusercontent.com/u/47728178?v=4"/>
+                <RepositoryCard showFavoriteButton={false} cardImageUri="https://i..com/originals/4f/ed/e4/4fede4476616eea97aa3cb1d6abb69fe.png"/>
                 <View style={{marginTop: 30}}><Button title="Go to favorites Screen" onPress={handleWithGoToFavoritesClick}/></View>
         </MainContainer>
     )
