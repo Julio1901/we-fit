@@ -1,11 +1,27 @@
 import styled from "styled-components/native";
+import { Platform } from "react-native";
 
 export const MainContainer = styled.View`
     height: 167px;
     margin-left: 16px;
     margin-right: 16px;
     margin-top: 16px;
-    background-color: aqua;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+
+    ${Platform.select({
+    ios: `
+      shadow-color: #000;
+      shadow-offset: 0px 2px;
+      shadow-opacity: 0.2;
+      shadow-radius: 4px;
+    `,
+    android: `
+      elevation: 4;
+      shadow-color: #000;
+      shadow-opacity: 0.2;
+    `,
+  })}
 `
 
 export const HeaderContainer = styled.View`
