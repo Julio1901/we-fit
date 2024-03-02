@@ -7,6 +7,7 @@ import RepositoryCard from "../../componentes/repositoryCard/RepositoryCard";
 import BottomNavigationComponent from "../../componentes/bottomNavigationComponent/BottomNavigationComponent";
 import axios from "axios";
 import { USERS_ENDPOINT, getReposEndPoint } from "../../network/endpoints";
+import { Animated, Easing } from 'react-native';
 import { useEffect, useState } from "react";
 import BottomSearchComponent from "../../componentes/bottomSearchComponent/BottomSearchComponent";
 
@@ -17,7 +18,9 @@ const HomeScreen : React.FC = () => {
     const [repositories, setRepositories] = useState<IGitHubRepository[] | null>(null);
     //TODO: solution to handle with url
     // const [ownerName, setOwnerName] = useState('')
-
+    const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+    const [bottomSheetHeight] = useState(new Animated.Value(0));
+  
 
     const fetchGitHubRepository = async () => {
         try{
@@ -38,16 +41,29 @@ const HomeScreen : React.FC = () => {
         navigator.navigate('Favorites')
     }
 
+    const handleBottomSheetToggle = () => {
+        setIsBottomSheetOpen(!isBottomSheetOpen);
+
+        Animated.timing(bottomSheetHeight, {
+          toValue: isBottomSheetOpen ? 0 : 200, 
+          duration: 300, 
+          easing: Easing.ease,
+          useNativeDriver: false
+        }).start();
+      };
+
     return (
         <MainContainer>
-            <HeaderBarWithIcon title="WeFit" icon={settingsIcon}/>
+            <HeaderBarWithIcon title="WeFit" icon={settingsIcon} onIconPressed={handleBottomSheetToggle}/>
                 <FlatList
                     data={repositories}
                     renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} />}
                     keyExtractor={item => item.id.toString()}
                 />
-                {/* <BottomNavigationComponent type="repositories"/> */}
-                <BottomSearchComponent/>
+                <Animated.View style={{ height: bottomSheetHeight }}>
+                    <BottomSearchComponent onCancelPressed={handleBottomSheetToggle} onSavePressed={handleBottomSheetToggle}/>
+                </Animated.View>
+                {!isBottomSheetOpen ? ( <BottomNavigationComponent type="repositories"/>) : null}
         </MainContainer>
     )
 }

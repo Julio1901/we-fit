@@ -15,7 +15,7 @@ export const TitleContainer = styled.View`
     justify-content: center;
 `
 
-export const IconContainer = styled.View`
+export const IconContainer = styled.TouchableOpacity`
     width: 48px;
     height: 48px;
     margin-right: 8px;

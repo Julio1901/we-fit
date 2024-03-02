@@ -1,6 +1,11 @@
 import { BottomUnderline, ButtonFilled, ButtonFilledTitle, ButtonText, ButtonTextTitle, ButtonsContainer, DraggableView, HeaderContainer, MainContainer, SearchComponentTitle, SearchInputText, SearchInputTextContainer, SearchInputTextTitle } from "./styles";
 
-const BottomSearchComponent : React.FC = () => {
+interface IBottomSearchComponentProps {
+    onCancelPressed : () => void;
+    onSavePressed : () => void;
+}
+
+const BottomSearchComponent : React.FC<IBottomSearchComponentProps> = ({onCancelPressed, onSavePressed}) => {
     return (
         <MainContainer>
             <HeaderContainer>
@@ -13,10 +18,10 @@ const BottomSearchComponent : React.FC = () => {
                 <BottomUnderline/>
             </SearchInputTextContainer>
             <ButtonsContainer>
-                <ButtonText>
+                <ButtonText onPress={onCancelPressed}>
                     <ButtonTextTitle>CANCELAR</ButtonTextTitle>
                 </ButtonText>
-                <ButtonFilled>
+                <ButtonFilled onPress={onSavePressed}>
                     <ButtonFilledTitle>SALVAR</ButtonFilledTitle>
                 </ButtonFilled>
             </ButtonsContainer>
