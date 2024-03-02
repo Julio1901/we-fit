@@ -8,6 +8,7 @@ import BottomNavigationComponent from "../../componentes/bottomNavigationCompone
 import axios from "axios";
 import { USERS_ENDPOINT, getReposEndPoint } from "../../network/endpoints";
 import { useEffect, useState } from "react";
+import BottomSearchComponent from "../../componentes/bottomSearchComponent/BottomSearchComponent";
 
 const HomeScreen : React.FC = () => {
     
@@ -21,11 +22,8 @@ const HomeScreen : React.FC = () => {
     const fetchGitHubRepository = async () => {
         try{
             const response = await axios.get<IGitHubRepository[]>(getReposEndPoint('facebook'))
-            setRepositories(response.data)
-            console.log('TEST REQUEST')
-            console.log(response.data)
+            setRepositories(response.data)  
         }catch(error){
-            console.log(`${USERS_ENDPOINT}/facebook/repos`)
             console.error('Error when making request:', error);
         }
     }
@@ -48,7 +46,8 @@ const HomeScreen : React.FC = () => {
                     renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} />}
                     keyExtractor={item => item.id.toString()}
                 />
-                <BottomNavigationComponent type="repositories"/>
+                {/* <BottomNavigationComponent type="repositories"/> */}
+                <BottomSearchComponent/>
         </MainContainer>
     )
 }
