@@ -4,7 +4,7 @@ import { BottomContainer, DescriptionText, Divider, FavoriteButton, StarIcon, Fa
 
 interface IRepositoryCardProps {
     showFavoriteButton : boolean;
-    cardImageUri: string 
+    cardImageUri: string;
 }
 
 const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, cardImageUri}) => {
