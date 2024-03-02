@@ -1,4 +1,4 @@
-import { BottomUnderline, DraggableView, HeaderContainer, MainContainer, SearchComponentTitle, SearchInputText, SearchInputTextContainer, SearchInputTextTitle } from "./styles";
+import { BottomUnderline, ButtonFilled, ButtonFilledTitle, ButtonText, ButtonTextTitle, ButtonsContainer, DraggableView, HeaderContainer, MainContainer, SearchComponentTitle, SearchInputText, SearchInputTextContainer, SearchInputTextTitle } from "./styles";
 
 const BottomSearchComponent : React.FC = () => {
     return (
@@ -12,8 +12,14 @@ const BottomSearchComponent : React.FC = () => {
                 <SearchInputText /> 
                 <BottomUnderline/>
             </SearchInputTextContainer>
-          
-            
+            <ButtonsContainer>
+                <ButtonText>
+                    <ButtonTextTitle>CANCELAR</ButtonTextTitle>
+                </ButtonText>
+                <ButtonFilled>
+                    <ButtonFilledTitle>SALVAR</ButtonFilledTitle>
+                </ButtonFilled>
+            </ButtonsContainer>
         </MainContainer>
     )
 }

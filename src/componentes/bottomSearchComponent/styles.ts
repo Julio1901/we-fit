@@ -63,3 +63,39 @@ export const BottomUnderline = styled.View`
     margin-top: auto;
     background-color: #0000006B;
 `
+
+export const ButtonsContainer = styled.View`
+    height: 42px;
+    margin-top: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+    gap: 10px;
+    flex-direction: row;
+`
+
+export const ButtonText = styled.TouchableOpacity`
+    flex: 1;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+`
+
+export const ButtonTextTitle = styled.Text`
+    font-size: 15px;
+    font-family: 'Roboto-Medium';
+    color: #1976D2;
+`
+
+export const ButtonFilled = styled.TouchableOpacity`
+    flex: 1;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1976D2;
+`
+
+export const ButtonFilledTitle = styled.Text`
+    font-size: 15px;
+    font-family: 'Roboto-Medium';
+    color: #FFFFFF;
+`
