@@ -45,7 +45,7 @@ const HomeScreen : React.FC = () => {
             <HeaderBarWithIcon title="WeFit" icon={settingsIcon}/>
                 <FlatList
                     data={repositories}
-                    renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} cardImageUri={item.owner.avatar_url} />}
+                    renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} />}
                     keyExtractor={item => item.id.toString()}
                 />
                 <BottomNavigationComponent type="repositories"/>

@@ -115,7 +115,6 @@ export const FavoriteButtonTitle = styled.Text`
 `
 
 export const StarsCounterContainer = styled.View`
-    width: 34px;
     height: 20px;
     flex-direction: row;
     align-items: center;
@@ -124,7 +123,7 @@ export const StarsCounterContainer = styled.View`
 export const StarsCounterText = styled.Text `
     font-size: 12px;
     font-family: "Inter-Regular-400";
-    margin-left: auto;
+    margin-left: 6px;
     color: #9A9A9A;
 `
 

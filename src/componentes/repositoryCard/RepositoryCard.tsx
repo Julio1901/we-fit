@@ -4,10 +4,10 @@ import { BottomContainer, DescriptionText, Divider, FavoriteButton, StarIcon, Fa
 
 interface IRepositoryCardProps {
     showFavoriteButton : boolean;
-    cardImageUri: string;
+    item: IGitHubRepository;
 }
 
-const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, cardImageUri}) => {
+const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, item}) => {
 
     const [imageError, setImageError] = useState(false)
 
@@ -15,11 +15,11 @@ const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, ca
         <MainContainer>
             <HeaderContainer>
                 <TitleContainer>
-                    <OwnerTitle numberOfLines={1}>appswefit</OwnerTitle>
-                    <TitleName numberOfLines={1}>/create-react-appaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbb</TitleName>
+                    <OwnerTitle numberOfLines={1}>{item.owner.login}</OwnerTitle>
+                    <TitleName numberOfLines={1}>/{item.name}</TitleName>
                 </TitleContainer>
                 { !imageError ? (
-                    <OwnerImage source={{uri: cardImageUri}} onError={() => {setImageError(true)}}/>
+                    <OwnerImage source={{uri: item.owner.avatar_url}} onError={() => {setImageError(true)}}/>
                 ) : (
                     <OwnerImage source={require("../../../assets/images/image-profile-not-found.png")}/>
                 )
@@ -27,7 +27,7 @@ const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, ca
               
             </HeaderContainer>
             <Divider/>
-            <DescriptionText numberOfLines={2}>Yarn Workspaces Monorepo support for Create-React-App / React-Scripts.</DescriptionText>
+            <DescriptionText numberOfLines={2}>{item.description}</DescriptionText>
             <BottomContainer>
                 { showFavoriteButton ? (
                     <FavoriteButton>
@@ -38,11 +38,11 @@ const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, ca
                 }   
                 <StarsCounterContainer>
                     <StarIcon source={require("../../../assets/icons/icon-star.png")} style={{marginLeft:1.67}}/>
-                    <StarsCounterText>0</StarsCounterText>
+                    <StarsCounterText>{item.stargazers_count}</StarsCounterText>
                 </StarsCounterContainer>
                 <LanguageContainer>
                     <LanguageIcon source={require("../../../assets/icons/icon-red-circle.png")}/>
-                    <LanguageTitle>TypeScript</LanguageTitle>
+                    <LanguageTitle>{ item.language ? item.language : "Language not informed"}</LanguageTitle>
                 </LanguageContainer>
             </BottomContainer>
         </MainContainer>
