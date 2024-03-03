@@ -8,7 +8,8 @@ export const MainContainer = styled(SafeAreaView)`
 `
 
 export const EmptyScenarioContainer = styled.View`
-    height: 90%;
+    flex: 1;
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
 `

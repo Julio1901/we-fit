@@ -1,4 +1,4 @@
-import { Button, View, Text, FlatList } from "react-native"
+import { Text, FlatList } from "react-native"
 import { useNavigation, ParamListBase } from "@react-navigation/native"
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { EmptyScenarioContainer, MainContainer } from "./styles";
@@ -6,22 +6,33 @@ import HeaderBarWithIcon from "../../componentes/headerBarWithIcon/HeaderBarWith
 import RepositoryCard from "../../componentes/repositoryCard/RepositoryCard";
 import BottomNavigationComponent from "../../componentes/bottomNavigationComponent/BottomNavigationComponent";
 import axios from "axios";
-import { USERS_ENDPOINT, getReposEndPoint } from "../../network/endpoints";
+import {getReposEndPoint } from "../../network/endpoints";
 import { Animated, Easing } from 'react-native';
 import { useEffect, useState } from "react";
 import BottomSearchComponent from "../../componentes/bottomSearchComponent/BottomSearchComponent";
 import { GitHubRepository } from "../../repositoryies/GitHubRepository";
 
 
-const HomeScreen : React.FC = () => {
+
+
+const ShowRepositoriesScreen : React.FC = () => {
     
-    const navigator = useNavigation<NativeStackNavigationProp<ParamListBase>>()
-    const settingsIcon = require("../../../assets/icons/icon-settings.png")
-    const [repositories, setRepositories] = useState<IGitHubUserRepository[] | null>(null);
-    const [ownerName, setOwnerName] = useState('')
-    const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
-    const [bottomSheetHeight] = useState(new Animated.Value(0));
+  type ShowRepositoriesScreenType = 'home' | 'favorites' 
+  const HOME_EMPTY_STATE_MESSAGE =  'Pesquise um usuário para ver seus repositórios'
+  const FAVORITES_EMPTY_STATE_MESSAGE = 'Você não possui repositórios favoritados'
+
+  const navigator = useNavigation<NativeStackNavigationProp<ParamListBase>>()
+  const settingsIcon = require("../../../assets/icons/icon-settings.png")
+  const [repositories, setRepositories] = useState<IGitHubUserRepository[] | null>(null)
+  const [ownerName, setOwnerName] = useState('')
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false)
+  const [bottomSheetHeight] = useState(new Animated.Value(0))
+  const [screenType, setScreenType] = useState<ShowRepositoriesScreenType>('home')
+  const [emptyStateMessage, setEmptyStateMessage] = useState(HOME_EMPTY_STATE_MESSAGE)
+  const [showEmptyStateMessate, setShowEmptyStateMessage] = useState(true)
+
   
+
 
   const mockResponse = () => {
             // TODO: Remove this mock
@@ -113,13 +124,31 @@ const HomeScreen : React.FC = () => {
 
     const fetchGitHubRepository = async () => {
         try{
-          if(ownerName === ''){
-            //TODO: Remove mock
-            mockResponse()
+          if(ownerName === '' && screenType === 'home'){
             return
-          }
+          }else if (screenType === 'favorites') {
+            // setEmptyStateMessage(FAVORITES_EMPTY_STATE_MESSAGE)
+            const response = await GitHubRepository.getLocalRepositories()
+            if(response.length !== 0){
+              setShowEmptyStateMessage(false)
+              setRepositories(response)
+            }else{
+              setShowEmptyStateMessage(true)
+            }
+          
+          }else{
+         
+            // setEmptyStateMessage(HOME_EMPTY_STATE_MESSAGE)
             const response = await axios.get<IGitHubUserRepository[]>(getReposEndPoint(ownerName))
-            setRepositories(response.data)  
+            if(response.data.length !== 0){
+              setShowEmptyStateMessage(false)
+              setRepositories(response.data)
+            }else{
+              setShowEmptyStateMessage(true)
+            }
+          
+          }
+          
         }catch(error){
             //TODO: Remove this mock
             // const mockRepositories: IGitHubRepository[] = [
@@ -215,11 +244,11 @@ const HomeScreen : React.FC = () => {
         //TODO: Implement name into dependencies to refetch when name search change
       useEffect(() => {
          fetchGitHubRepository()
-      }, [ownerName]);
+      }, [ownerName, screenType]);
 
-    const handleWithGoToFavoritesClick = () => {
-        navigator.navigate('Favorites')
-    }
+    // const handleWithGoToFavoritesClick = () => {
+    //     navigator.navigate('Favorites')
+    // }
 
     const handleBottomSheetToggle = () => {
         setIsBottomSheetOpen(!isBottomSheetOpen);
@@ -243,31 +272,46 @@ const HomeScreen : React.FC = () => {
       GitHubRepository.saveLocalRepository(repository)
     }
 
-    const getFavoriteRepositories = async () => {
-      const response = await GitHubRepository.getLocalRepositories()
-    }
+    // const getFavoriteRepositories = async () => {
+    //   const response = await GitHubRepository.getLocalRepositories()
+    //   if(response.length === 0){
+    //     setShowEmptyStateMessage(true)
+    //   }else{
+    //     setShowEmptyStateMessage(false)
+    //   }
+    // }  
 
-    const handleWithFavoritesButtonClicked = () =>{
-      getFavoriteRepositories()
+
+  //TODO: Remove message for her to handle with request delay when screen change
+    const handleWithBottomMenuFavoritesButtonPressed = () =>{
+      // getFavoriteRepositories()
+      setScreenType('favorites')
+      setEmptyStateMessage(FAVORITES_EMPTY_STATE_MESSAGE)
     } 
+
+    const handleWithBottomMenuRepositoriesButtonPressed = () => {
+      setScreenType('home')
+      setEmptyStateMessage(HOME_EMPTY_STATE_MESSAGE)
+    }
 
     return (
         <MainContainer>
             <HeaderBarWithIcon title="WeFit" icon={settingsIcon} onIconPressed={handleBottomSheetToggle}/>
-            
-              {/* {ownerName === '' ? (<EmptyScenarioContainer><Text>Pesquise um usuário para ver seus repositórios</Text></EmptyScenarioContainer>) : null} */}
-                <FlatList
-                    data={repositories}
-                    renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed}/>}
-                    keyExtractor={item => item.id.toString()}
-                    
-                />
+              {showEmptyStateMessate? (<EmptyScenarioContainer><Text>{emptyStateMessage}</Text></EmptyScenarioContainer>) : (
+                                <FlatList
+                                data={repositories}
+                                renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed}/>}
+                                keyExtractor={item => item.id.toString()}
+                                
+                            />
+              )}
+              {/* {repositories?.length === 0 && screenType === 'favorites'? (<EmptyScenarioContainer><Text>Você não possui repositórios favoritados</Text></EmptyScenarioContainer>) : null} */}
               <Animated.View style={{ height: bottomSheetHeight, backgroundColor: 'rgba(52, 52, 52, 0.8)', borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
                     <BottomSearchComponent onCancelPressed={handleBottomSheetToggle} onSavePressed={handleWithSaveButtonPressed} bottomSheetIsOpen={isBottomSheetOpen}/>
               </Animated.View>
-             {!isBottomSheetOpen ? ( <BottomNavigationComponent type="repositories" onFavoriteButtonClicked={handleWithFavoritesButtonClicked}/>) : null} 
+             {!isBottomSheetOpen ? ( <BottomNavigationComponent type="repositories" onFavoriteButtonClicked={handleWithBottomMenuFavoritesButtonPressed} onRepositoriesButtonClicked={handleWithBottomMenuRepositoriesButtonPressed} />) : null} 
         </MainContainer>
     )
 }
 
-export default HomeScreen
+export default ShowRepositoriesScreen

@@ -23,7 +23,7 @@ export const MainContainer = styled.View`
   })}
 `
 
-export const RepositoriesButtonContainer = styled.View`
+export const RepositoriesButtonContainer = styled.TouchableOpacity`
      flex: 1;
      height: 56px;
      align-items: center;

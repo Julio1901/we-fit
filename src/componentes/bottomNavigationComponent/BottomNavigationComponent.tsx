@@ -5,9 +5,10 @@ type BottomNavigationComponentType = "repositories" | "favorites" ;
 interface IBottomNavigationComponentProps {
     type: BottomNavigationComponentType;
     onFavoriteButtonClicked : () => void;
+    onRepositoriesButtonClicked: () => void;
 }
 
-const BottomNavigationComponent : React.FC<IBottomNavigationComponentProps> = ({type, onFavoriteButtonClicked}) => {
+const BottomNavigationComponent : React.FC<IBottomNavigationComponentProps> = ({type, onFavoriteButtonClicked, onRepositoriesButtonClicked}) => {
 
     const buttonsConfigs = {
         repositories: {
@@ -23,10 +24,10 @@ const BottomNavigationComponent : React.FC<IBottomNavigationComponentProps> = ({
           favoritesTextColor: "#1976D2"
         }
       };
-      
+
     return(
         <MainContainer>
-            <RepositoriesButtonContainer>
+            <RepositoriesButtonContainer onPress={onRepositoriesButtonClicked}>
                 <IconGitHub source={buttonsConfigs[type].gitHub}/>
                 <RepositoriesText style={{ color: buttonsConfigs[type].repositoriesTextColor}}>Repositórios</RepositoriesText>
             </RepositoriesButtonContainer>
