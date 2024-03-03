@@ -4,10 +4,11 @@ import { BottomContainer, DescriptionText, Divider, FavoriteButton, StarIcon, Fa
 
 interface IRepositoryCardProps {
     showFavoriteButton : boolean;
-    item: IGitHubRepository;
+    item: IGitHubUserRepository;
+    onFavoriteButtonPressed ? : (item : IGitHubUserRepository) => void;
 }
 
-const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, item}) => {
+const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, item, onFavoriteButtonPressed = null}) => {
 
     const [imageError, setImageError] = useState(false)
 
@@ -30,7 +31,7 @@ const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, it
             <DescriptionText numberOfLines={2}>{item.description}</DescriptionText>
             <BottomContainer>
                 { showFavoriteButton ? (
-                    <FavoriteButton>
+                    <FavoriteButton onPress={() => { onFavoriteButtonPressed? onFavoriteButtonPressed(item) : null}}>
                         <StarIcon source={require("../../../assets/icons/icon-star.png")} style={{marginLeft:11.67}}/>
                         <FavoriteButtonTitle>Favoritar</FavoriteButtonTitle> 
                     </FavoriteButton>

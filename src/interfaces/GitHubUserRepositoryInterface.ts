@@ -1,5 +1,5 @@
   
-  interface IGitHubRepository {
+  interface IGitHubUserRepository {
     id: number;
     name: string;
     owner: IOwner;

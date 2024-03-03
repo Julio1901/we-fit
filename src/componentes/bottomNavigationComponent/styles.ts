@@ -29,7 +29,7 @@ export const RepositoriesButtonContainer = styled.View`
      align-items: center;
 `
 
-export const FavoritesButtonContainer = styled.View`
+export const FavoritesButtonContainer = styled.TouchableOpacity`
     flex: 1;
     height: 56px;
     align-items: center;
