@@ -5,6 +5,7 @@ export const MainContainer = styled.View`
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     background-color: #FFFFFF;
+    z-index: 2; 
 `
 
 export const HeaderContainer = styled.View`
@@ -99,3 +100,14 @@ export const ButtonFilledTitle = styled.Text`
     font-family: 'Roboto-Medium';
     color: #FFFFFF;
 `
+
+export const Overlay = styled.View`
+    position: absolute;
+    top: -50000px;
+    left: 0;
+    right: 0;
+    bottom: 200px;
+    background-color: #00000080;
+    z-index: 1; 
+    backdrop-filter: blur(5px); 
+`;
