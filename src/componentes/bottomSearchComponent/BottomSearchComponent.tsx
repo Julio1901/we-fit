@@ -27,6 +27,7 @@ const BottomSearchComponent : React.FC<IBottomSearchComponentProps> = ({onCancel
                     <ButtonFilledTitle>SALVAR</ButtonFilledTitle>
                 </ButtonFilled>
             </ButtonsContainer>
+   
         </MainContainer>
     )
 }

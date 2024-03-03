@@ -5,7 +5,7 @@ export const MainContainer = styled.View`
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     background-color: #FFFFFF;
-    z-index: 2; 
+    z-index: 1; 
 `
 
 export const HeaderContainer = styled.View`
@@ -106,8 +106,8 @@ export const Overlay = styled.View`
     top: -50000px;
     left: 0;
     right: 0;
-    bottom: 200px;
+    bottom: 190px;
     background-color: #00000080;
-    z-index: 1; 
+    z-index: 0; 
     backdrop-filter: blur(5px); 
 `;

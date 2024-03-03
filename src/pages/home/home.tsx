@@ -145,9 +145,9 @@ const HomeScreen : React.FC = () => {
                     renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} />}
                     keyExtractor={item => item.id.toString()}
                 />
-              <Animated.View style={{ height: bottomSheetHeight }}>
+              <Animated.View style={{ height: bottomSheetHeight, backgroundColor: 'rgba(52, 52, 52, 0.8)', borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
                     <BottomSearchComponent onCancelPressed={handleBottomSheetToggle} onSavePressed={handleBottomSheetToggle} bottomSheetIsOpen={isBottomSheetOpen}/>
-                </Animated.View>
+              </Animated.View>
              {!isBottomSheetOpen ? ( <BottomNavigationComponent type="repositories"/>) : null} 
         </MainContainer>
     )
