@@ -6,3 +6,9 @@ export const MainContainer = styled(SafeAreaView)`
     flex-direction: column; 
     background-color: #F6F6F5;
 `
+
+export const EmptyScenarioContainer = styled.View`
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+`

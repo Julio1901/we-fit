@@ -11,10 +11,6 @@ const BottomSearchComponent : React.FC<IBottomSearchComponentProps> = ({onCancel
     
     const [inputValue, setInputValue] = useState<string>('');
 
-    // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     setInputValue(event.target.value);
-    // };
-
     const handleWithInputValueChange = (value : string) => {
         setInputValue(value)    
     }
