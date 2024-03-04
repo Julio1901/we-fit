@@ -10,6 +10,7 @@ export const MainContainer = styled(SafeAreaView)`
 
 export const BodyContainer = styled.View`
     flex:1;
+    height: auto;
     flex-direction: column;
     margin-left: 16px;
     margin-right: 16PX;
@@ -39,7 +40,6 @@ export const TitleRepositoryName = styled(Text)`
 `
 
 export const Description = styled(Text)`
-    flex: 1;
     font-family: 'Inter-Regular-400';
     font-size: 16px;
     margin-top: 16px;
