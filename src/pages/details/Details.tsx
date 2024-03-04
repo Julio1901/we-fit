@@ -1,6 +1,6 @@
 import { ParamListBase, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import HeaderBackComponent from "../../componentes/headerBackComponent/HeaderBackComponent";
-import { BodyContainer, BottomButtonsContainer, Description, LanguageCircleIcon, LanguageContainer, MainContainer, TitleContainer, TitleOwner, TitleRepositoryName } from "./styles";
+import { BodyContainer, BottomButtonsContainer, Description, FavoriteButton, FavoriteButtonIcon, FavoriteButtonText, LanguageCircleIcon, LanguageContainer, MainContainer, SeeRepositoryButton, SeeRepositoryButtonContentContainer, SeeRepositoryButtonIcon, SeeRepositoryButtonText, TitleContainer, TitleOwner, TitleRepositoryName } from "./styles";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { LanguageTitle } from "../../componentes/repositoryCard/styles";
 import { RootStackParamList } from "../../../App";
@@ -35,7 +35,14 @@ const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
                 </LanguageContainer>
             </BodyContainer>
             <BottomButtonsContainer>
-
+                <SeeRepositoryButton> 
+                <SeeRepositoryButtonText>Ver repositório</SeeRepositoryButtonText>
+                <SeeRepositoryButtonIcon source={require('./../../../assets/icons/icon-link.png')}/>
+                </SeeRepositoryButton>
+                <FavoriteButton>
+                    <FavoriteButtonText>Favoritar</FavoriteButtonText>
+                    <FavoriteButtonIcon  source={require('./../../../assets/icons/icon-star-black.png')}/>
+                </FavoriteButton>
             </BottomButtonsContainer>
         </MainContainer>
   
