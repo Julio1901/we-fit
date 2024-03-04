@@ -8,7 +8,7 @@ import DetailsScreen from './src/pages/details/Details';
 
 export type RootStackParamList = {
   Home: undefined;
-  Details: { name: string };
+  Details: {repositoryJson: string};
 };
 
 const Stack = createNativeStackNavigator();

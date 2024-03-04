@@ -295,7 +295,8 @@ const ShowRepositoriesScreen : React.FC = () => {
     }
 
     const handleWithCardPressed = (item : IGitHubUserRepository) => {
-      navigator.navigate('Details', { name: 'Julio Cesar: CHEGOU!!' })
+      const itemJSON = JSON.stringify(item);
+      navigator.navigate('Details', {repositoryJson: itemJSON});
     }
 
     return (
@@ -304,7 +305,7 @@ const ShowRepositoriesScreen : React.FC = () => {
               {showEmptyStateMessate? (<EmptyScenarioContainer><Text>{emptyStateMessage}</Text></EmptyScenarioContainer>) : (
                                 <FlatList
                                 data={repositories}
-                                renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed} onCardPressed={handleWithCardPressed}/>}
+                                renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed} onCardPressed={() => handleWithCardPressed(item)}/>}
                                 keyExtractor={item => item.id.toString()}
                                 
                             />

@@ -1,6 +1,6 @@
 import { ParamListBase, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import HeaderBackComponent from "../../componentes/headerBackComponent/HeaderBackComponent";
-import { BodyContainer, BottomButtonsContainer, Description, LanguageCircleIcon, LanguageContainer, MainContainer, RepositoryName, TitleContainer, TitleOwner, TitleRepositoryName } from "./styles";
+import { BodyContainer, BottomButtonsContainer, Description, LanguageCircleIcon, LanguageContainer, MainContainer, TitleContainer, TitleOwner, TitleRepositoryName } from "./styles";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { LanguageTitle } from "../../componentes/repositoryCard/styles";
 import { RootStackParamList } from "../../../App";
@@ -11,11 +11,11 @@ interface DetailsScreenProps {
 }
 
 const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
-    const { name } = route.params;
+    const { repositoryJson } = route.params;
 
     const navigator = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  
-    console.log(name);
+    const repository = JSON.parse(repositoryJson) as IGitHubUserRepository
+    console.log(repository.name)
     const handleWithBackButtonPressed = () =>{
         navigator.navigate('Home')
     }
