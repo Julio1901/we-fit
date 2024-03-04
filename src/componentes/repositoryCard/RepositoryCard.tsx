@@ -6,14 +6,15 @@ interface IRepositoryCardProps {
     showFavoriteButton : boolean;
     item: IGitHubUserRepository;
     onFavoriteButtonPressed ? : (item : IGitHubUserRepository) => void;
+    onCardPressed : (item: IGitHubUserRepository) => void;
 }
 
-const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, item, onFavoriteButtonPressed = null}) => {
+const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, item, onFavoriteButtonPressed = null, onCardPressed}) => {
 
     const [imageError, setImageError] = useState(false)
 
     return(
-        <MainContainer>
+        <MainContainer onPress={onCardPressed}>
             <HeaderContainer>
                 <TitleContainer>
                     <OwnerTitle numberOfLines={1}>{item.owner.login}</OwnerTitle>

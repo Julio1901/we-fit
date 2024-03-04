@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import { Platform } from "react-native";
 
-export const MainContainer = styled.View`
+export const MainContainer = styled.TouchableOpacity`
     height: 167px;
     margin-left: 16px;
     margin-right: 16px;

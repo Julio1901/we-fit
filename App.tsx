@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ShowRepositoriesScreen from './src/pages/home/home';
-import FavoritesScreen from './src/pages/favorites/Favorites';
+import ShowRepositoriesScreen from './src/pages/showRepositories/showRepositoriesScreen';
 import {useFonts} from 'expo-font'
 import { View, Text } from 'react-native';
+import DetailsScreen from './src/pages/details/Details';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +28,7 @@ if(!fontsLoaded){
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='Home' component={ShowRepositoriesScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='Favorites' component={FavoritesScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name='Details' component={DetailsScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

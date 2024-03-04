@@ -294,13 +294,17 @@ const ShowRepositoriesScreen : React.FC = () => {
       setEmptyStateMessage(HOME_EMPTY_STATE_MESSAGE)
     }
 
+    const handleWithCardPressed = (item : IGitHubUserRepository) => {
+      navigator.navigate('Details')
+    }
+
     return (
         <MainContainer>
             <HeaderBarWithIcon title="WeFit" icon={settingsIcon} onIconPressed={handleBottomSheetToggle}/>
               {showEmptyStateMessate? (<EmptyScenarioContainer><Text>{emptyStateMessage}</Text></EmptyScenarioContainer>) : (
                                 <FlatList
                                 data={repositories}
-                                renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed}/>}
+                                renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed} onCardPressed={handleWithCardPressed}/>}
                                 keyExtractor={item => item.id.toString()}
                                 
                             />
