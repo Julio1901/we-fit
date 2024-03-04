@@ -295,7 +295,7 @@ const ShowRepositoriesScreen : React.FC = () => {
     }
 
     const handleWithCardPressed = (item : IGitHubUserRepository) => {
-      navigator.navigate('Details')
+      navigator.navigate('Details', { name: 'Julio Cesar: CHEGOU!!' })
     }
 
     return (

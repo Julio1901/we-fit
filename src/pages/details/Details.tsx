@@ -1,13 +1,21 @@
-import { ParamListBase, useNavigation, useRoute } from "@react-navigation/native";
+import { ParamListBase, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import HeaderBackComponent from "../../componentes/headerBackComponent/HeaderBackComponent";
 import { BodyContainer, BottomButtonsContainer, Description, LanguageCircleIcon, LanguageContainer, MainContainer, RepositoryName, TitleContainer, TitleOwner, TitleRepositoryName } from "./styles";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { LanguageTitle } from "../../componentes/repositoryCard/styles";
+import { RootStackParamList } from "../../../App";
 
-const DetailsScreen : React.FC = () => {
 
-    const navigator = useNavigation<NativeStackNavigationProp<ParamListBase>>()
+interface DetailsScreenProps {
+    route: RouteProp<RootStackParamList, 'Details'>;
+}
 
+const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
+    const { name } = route.params;
+
+    const navigator = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  
+    console.log(name);
     const handleWithBackButtonPressed = () =>{
         navigator.navigate('Home')
     }

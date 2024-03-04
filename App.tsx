@@ -5,6 +5,12 @@ import {useFonts} from 'expo-font'
 import { View, Text } from 'react-native';
 import DetailsScreen from './src/pages/details/Details';
 
+
+export type RootStackParamList = {
+  Home: undefined;
+  Details: { name: string };
+};
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
