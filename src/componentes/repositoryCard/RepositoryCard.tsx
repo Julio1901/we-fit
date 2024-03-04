@@ -18,7 +18,7 @@ const RepositoryCard : React.FC<IRepositoryCardProps> = ({showFavoriteButton, it
             <HeaderContainer>
                 <TitleContainer>
                     <OwnerTitle numberOfLines={1}>{item.owner.login}</OwnerTitle>
-                    <TitleName numberOfLines={1}>/{item.name}</TitleName>
+                    <TitleName numberOfLines={1}>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</TitleName>
                 </TitleContainer>
                 { !imageError ? (
                     <OwnerImage source={{uri: item.owner.avatar_url}} onError={() => {setImageError(true)}}/>
