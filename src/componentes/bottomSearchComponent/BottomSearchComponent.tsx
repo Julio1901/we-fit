@@ -8,7 +8,7 @@ interface IBottomSearchComponentProps {
 }
 
 const BottomSearchComponent : React.FC<IBottomSearchComponentProps> = ({onCancelPressed, onSavePressed, bottomSheetIsOpen = false}) => {
-    
+
     const [inputValue, setInputValue] = useState<string>('');
 
     const handleWithInputValueChange = (value : string) => {

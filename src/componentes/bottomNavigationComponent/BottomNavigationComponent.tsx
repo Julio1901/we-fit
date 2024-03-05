@@ -1,6 +1,6 @@
 import { FavoritesButtonContainer, FavoritesText, IconGitHub, IconStar, MainContainer, RepositoriesButtonContainer, RepositoriesText } from "./styles";
 
-type BottomNavigationComponentType = "repositories" | "favorites" ;
+export type BottomNavigationComponentType = "repositories" | "favorites" ;
 
 interface IBottomNavigationComponentProps {
     type: BottomNavigationComponentType;

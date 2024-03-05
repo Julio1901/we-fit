@@ -4,7 +4,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { EmptyScenarioContainer, MainContainer } from "./styles";
 import HeaderBarWithIcon from "../../componentes/headerBarWithIcon/HeaderBarWithSettingsIcon";
 import RepositoryCard from "../../componentes/repositoryCard/RepositoryCard";
-import BottomNavigationComponent from "../../componentes/bottomNavigationComponent/BottomNavigationComponent";
+import BottomNavigationComponent, { BottomNavigationComponentType } from "../../componentes/bottomNavigationComponent/BottomNavigationComponent";
 import axios from "axios";
 import {getReposEndPoint } from "../../network/endpoints";
 import { Animated, Easing } from 'react-native';
@@ -30,6 +30,7 @@ const ShowRepositoriesScreen : React.FC = () => {
   const [screenType, setScreenType] = useState<ShowRepositoriesScreenType>('home')
   const [emptyStateMessage, setEmptyStateMessage] = useState(HOME_EMPTY_STATE_MESSAGE)
   const [showEmptyStateMessate, setShowEmptyStateMessage] = useState(true)
+  const [bottomNavigateType, setBottomNavigationType] = useState<BottomNavigationComponentType>("repositories")
 
   
     const fetchGitHubRepository = async () => {
@@ -93,11 +94,13 @@ const ShowRepositoriesScreen : React.FC = () => {
   //TODO: Remove message for her to handle with request delay when screen change
     const handleWithBottomMenuFavoritesButtonPressed = () =>{
       setScreenType('favorites')
+      setBottomNavigationType('favorites')
       setEmptyStateMessage(FAVORITES_EMPTY_STATE_MESSAGE)
     } 
 
     const handleWithBottomMenuRepositoriesButtonPressed = () => {
       setScreenType('home')
+      setBottomNavigationType('repositories')
       setEmptyStateMessage(HOME_EMPTY_STATE_MESSAGE)
     }
 
@@ -117,14 +120,12 @@ const ShowRepositoriesScreen : React.FC = () => {
                                 
                             />
               )}
-
-          
               <Animated.View style={{ height: bottomSheetHeight, backgroundColor: 'rgba(52, 52, 52, 0.8)', borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
                     <View style={{ marginTop: isBottomSheetOpen ? 0 : 200 }}>
                       <BottomSearchComponent onCancelPressed={handleBottomSheetToggle} onSavePressed={handleWithSaveButtonPressed} bottomSheetIsOpen={isBottomSheetOpen}/>
                     </View>
               </Animated.View>
-             {!isBottomSheetOpen ? ( <BottomNavigationComponent type="repositories" onFavoriteButtonClicked={handleWithBottomMenuFavoritesButtonPressed} onRepositoriesButtonClicked={handleWithBottomMenuRepositoriesButtonPressed} />) : null} 
+             {!isBottomSheetOpen ? ( <BottomNavigationComponent type={bottomNavigateType} onFavoriteButtonClicked={handleWithBottomMenuFavoritesButtonPressed} onRepositoriesButtonClicked={handleWithBottomMenuRepositoriesButtonPressed} />) : null} 
         </MainContainer>
     )
 }
