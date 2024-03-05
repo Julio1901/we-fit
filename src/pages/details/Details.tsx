@@ -4,7 +4,7 @@ import { BodyContainer, BottomButtonsContainer, Description, FavoriteButton, Fav
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { LanguageTitle } from "../../componentes/repositoryCard/styles";
 import { RootStackParamList } from "../../../App";
-
+import { Linking } from 'react-native';
 
 interface DetailsScreenProps {
     route: RouteProp<RootStackParamList, 'Details'>;
@@ -15,11 +15,15 @@ const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
 
     const navigator = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const repository = JSON.parse(repositoryJson) as IGitHubUserRepository
-    console.log(repository.name)
+
     const handleWithBackButtonPressed = () =>{
         navigator.navigate('Home')
     }
     
+    const handleWithSeeRepositoryClicked = () =>{
+        Linking.openURL(repository.html_url)
+    }
+
     return(
         <MainContainer>
             <HeaderBackComponent screenName="Detalhes" onBackButtonPressed={handleWithBackButtonPressed}/>
@@ -35,9 +39,9 @@ const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
                 </LanguageContainer>
             </BodyContainer>
             <BottomButtonsContainer>
-                <SeeRepositoryButton> 
-                <SeeRepositoryButtonText>Ver repositório</SeeRepositoryButtonText>
-                <SeeRepositoryButtonIcon source={require('./../../../assets/icons/icon-link.png')}/>
+                <SeeRepositoryButton onPress={handleWithSeeRepositoryClicked}> 
+                    <SeeRepositoryButtonText>Ver repositório</SeeRepositoryButtonText>
+                    <SeeRepositoryButtonIcon source={require('./../../../assets/icons/icon-link.png')}/>
                 </SeeRepositoryButton>
                 <FavoriteButton>
                     <FavoriteButtonText>Favoritar</FavoriteButtonText>

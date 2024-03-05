@@ -4,6 +4,7 @@ import ShowRepositoriesScreen from './src/pages/showRepositories/showRepositorie
 import {useFonts} from 'expo-font'
 import { View, Text } from 'react-native';
 import DetailsScreen from './src/pages/details/Details';
+import SplashScreen from './src/componentes/splashScreen/SplashScreen';
 
 
 export type RootStackParamList = {
@@ -33,6 +34,7 @@ if(!fontsLoaded){
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name='SplashScreen' component={SplashScreen} options={{ headerShown: false }} />
         <Stack.Screen name='Home' component={ShowRepositoriesScreen} options={{ headerShown: false }}/>
         <Stack.Screen name='Details' component={DetailsScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>

@@ -6,4 +6,5 @@
     description: string;
     language: string | null;
     stargazers_count: number;
+    html_url: string;
   }
