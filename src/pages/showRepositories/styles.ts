@@ -5,7 +5,6 @@ export const MainContainer = styled(SafeAreaView)`
     flex: 1;
     flex-direction: column; 
     background-color: #F6F6F5;
-    background-color: aqua;
 `
 
 export const EmptyScenarioContainer = styled.View`

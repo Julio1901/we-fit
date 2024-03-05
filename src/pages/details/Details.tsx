@@ -6,6 +6,8 @@ import { LanguageTitle } from "../../componentes/repositoryCard/styles";
 import { RootStackParamList } from "../../../App";
 import { Linking } from 'react-native';
 
+// type FavoriteButtonState = "favorite" | "unfavorite"
+
 interface DetailsScreenProps {
     route: RouteProp<RootStackParamList, 'Details'>;
 }
@@ -15,6 +17,19 @@ const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
 
     const navigator = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const repository = JSON.parse(repositoryJson) as IGitHubUserRepository
+
+    // const favoriteButtonConfigs = {
+    //     favorite : {
+    //         backGroundColor: '#FFD02C',
+    //         text: 'Favoritar',
+    //         icon: require('./../../../assets/icons/icon-star-black.png')
+    //     },
+    //     unfavorite : {
+    //         backGroundColor: "#FFFFFF",
+    //         text: 'Desfavoritar',
+    //         icon: require('./../../../assets/icons/icon-start-not-fill.png')
+    //     }
+    // }
 
     const handleWithBackButtonPressed = () =>{
         navigator.navigate('Home')

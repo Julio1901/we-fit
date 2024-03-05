@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
-import { Text } from 'react-native';
+import { Platform, Text } from 'react-native';
 
 export const MainContainer = styled(SafeAreaView)`
     flex: 1;
@@ -103,6 +103,21 @@ export const FavoriteButton = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     background-color: #FFD02C;
+
+    ${Platform.select({
+    ios: `
+      shadow-color: #000000;
+      shadow-offset: 0px 3px;
+      shadow-opacity: 0.20;
+      shadow-radius: 1px;
+    `,
+    android: `
+      elevation: 2;
+      shadow-color: #000000;
+      shadow-opacity: 0.20;
+    `,
+  })}
+
 `
 
 export const FavoriteButtonText = styled.Text`
