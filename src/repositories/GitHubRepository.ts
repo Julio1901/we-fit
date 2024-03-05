@@ -5,6 +5,7 @@ import { getReposEndPoint } from '../network/endpoints';
 export interface IGitHubRepository{
     saveLocalRepository: (data: IGitHubUserRepository) => Promise<void> ;
     getLocalRepositories: () => Promise<IGitHubUserRepository[]>;
+    removeRepositoryFromLocalStorage : (data: IGitHubUserRepository)  => Promise<void> ;
     getRemoteRepositories : (ownerName: string) => Promise<IGitHubUserRepository[]>;
 }
 
@@ -19,8 +20,6 @@ export const GitHubRepository : IGitHubRepository = {
             throw error;
         }
     },
-
-
 
     getLocalRepositories: async (): Promise<IGitHubUserRepository[]> => {
         try {
@@ -42,6 +41,14 @@ export const GitHubRepository : IGitHubRepository = {
         }
     },
     
+    removeRepositoryFromLocalStorage : async (data: IGitHubUserRepository) => {
+        try {
+          await AsyncStorage.removeItem(String(data.id))
+        } catch(e) {
+         console.log(`Repository note removed. Error: ${e}`)
+        }
+      },
+
     getRemoteRepositories: async function (ownerName: string): Promise<IGitHubUserRepository[]> {
         let response = await axios.get<IGitHubUserRepository[]>(getReposEndPoint(ownerName))
         const favoriteRepositories = await this.getLocalRepositories()

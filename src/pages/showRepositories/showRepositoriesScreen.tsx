@@ -1,5 +1,5 @@
 import { Text, FlatList, View } from "react-native"
-import { useNavigation, ParamListBase } from "@react-navigation/native"
+import { useNavigation, ParamListBase, useFocusEffect } from "@react-navigation/native"
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { EmptyScenarioContainer, MainContainer } from "./styles";
 import HeaderBarWithIcon from "../../componentes/headerBarWithIcon/HeaderBarWithSettingsIcon";
@@ -11,6 +11,7 @@ import { Animated, Easing } from 'react-native';
 import { useEffect, useState } from "react";
 import BottomSearchComponent from "../../componentes/bottomSearchComponent/BottomSearchComponent";
 import { GitHubRepository } from "../../repositories/GitHubRepository";
+import React from "react";
 
 
 
@@ -34,20 +35,14 @@ const ShowRepositoriesScreen : React.FC = () => {
 
   
     const fetchGitHubRepository = async () => {
+      console.log('PASSOU NO FETCH')
         try{
           if(ownerName === '' && screenType === 'repositories'){
             setRepositories([])
             setShowEmptyStateMessage(true)
             return
           }else if (screenType === 'favorites') {
-            const response = await GitHubRepository.getLocalRepositories()
-            if(response.length !== 0){
-              setShowEmptyStateMessage(false)
-              setRepositories(response)
-            }else{
-              setShowEmptyStateMessage(true)
-            }
-          
+            getLocalData()
           }else {
             const response = await GitHubRepository.getRemoteRepositories(ownerName)
             if(response.length !== 0){
@@ -68,6 +63,26 @@ const ShowRepositoriesScreen : React.FC = () => {
       useEffect(() => {
          fetchGitHubRepository()
       }, [ownerName, screenType]);
+
+      useFocusEffect(() => {
+        
+      });
+
+      const getLocalData = async () => {
+        const response = await GitHubRepository.getLocalRepositories()
+            if(response.length !== 0){
+              setShowEmptyStateMessage(false)
+              setRepositories(response)
+            }else{
+              setShowEmptyStateMessage(true)
+            }
+      }
+
+      useFocusEffect(
+        React.useCallback(() => {
+          getLocalData()
+        }, [])
+      );
 
     const handleBottomSheetToggle = () => {
         setIsBottomSheetOpen(!isBottomSheetOpen);

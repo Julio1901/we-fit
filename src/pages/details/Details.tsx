@@ -6,6 +6,7 @@ import { LanguageTitle } from "../../componentes/repositoryCard/styles";
 import { RootStackParamList } from "../../../App";
 import { Linking } from 'react-native';
 import { useState } from "react";
+import { GitHubRepository } from "../../repositories/GitHubRepository";
 
  type FavoriteButtonState = "favorite" | "unfavorite"
 
@@ -37,7 +38,12 @@ const DetailsScreen : React.FC<DetailsScreenProps> = ({route, buttonState}) => {
         Linking.openURL(repository.html_url)
     }
 
-    const handleWithFavoriteButtonClicked = () => {
+    const handleWithFavoriteButtonClicked = async () => {
+        if(favoriteButtonType === 'favorite'){
+            await GitHubRepository.saveLocalRepository(repository)
+        }else{
+            await GitHubRepository.removeRepositoryFromLocalStorage(repository)
+        }    
         handleWithfavoriteButtonState()
     }
 
