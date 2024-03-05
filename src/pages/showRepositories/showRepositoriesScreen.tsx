@@ -17,7 +17,7 @@ import { GitHubRepository } from "../../repositoryies/GitHubRepository";
 
 const ShowRepositoriesScreen : React.FC = () => {
     
-  type ShowRepositoriesScreenType = 'home' | 'favorites' 
+  type ShowRepositoriesScreenType = 'repositories' | 'favorites' 
   const HOME_EMPTY_STATE_MESSAGE =  'Pesquise um usuário para ver seus repositórios'
   const FAVORITES_EMPTY_STATE_MESSAGE = 'Você não possui repositórios favoritados'
 
@@ -27,7 +27,7 @@ const ShowRepositoriesScreen : React.FC = () => {
   const [ownerName, setOwnerName] = useState('')
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false)
   const [bottomSheetHeight] = useState(new Animated.Value(0))
-  const [screenType, setScreenType] = useState<ShowRepositoriesScreenType>('home')
+  const [screenType, setScreenType] = useState<ShowRepositoriesScreenType>('repositories')
   const [emptyStateMessage, setEmptyStateMessage] = useState(HOME_EMPTY_STATE_MESSAGE)
   const [showEmptyStateMessate, setShowEmptyStateMessage] = useState(true)
   const [bottomNavigateType, setBottomNavigationType] = useState<BottomNavigationComponentType>("repositories")
@@ -35,7 +35,7 @@ const ShowRepositoriesScreen : React.FC = () => {
   
     const fetchGitHubRepository = async () => {
         try{
-          if(ownerName === '' && screenType === 'home'){
+          if(ownerName === '' && screenType === 'repositories'){
             return
           }else if (screenType === 'favorites') {
             const response = await GitHubRepository.getLocalRepositories()
@@ -99,7 +99,7 @@ const ShowRepositoriesScreen : React.FC = () => {
     } 
 
     const handleWithBottomMenuRepositoriesButtonPressed = () => {
-      setScreenType('home')
+      setScreenType('repositories')
       setBottomNavigationType('repositories')
       setEmptyStateMessage(HOME_EMPTY_STATE_MESSAGE)
     }
