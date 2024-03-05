@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import styled from "styled-components/native";
 
 export const MainContainer = styled.View`
@@ -93,6 +94,20 @@ export const ButtonFilled = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     background-color: #1976D2;
+    
+    ${Platform.select({
+    ios: `
+      shadow-color: #000000;
+      shadow-offset: 0px 3px;
+      shadow-opacity: 0.20;
+      shadow-radius: 1px;
+    `,
+    android: `
+      elevation: 2;
+      shadow-color: #000000;
+      shadow-opacity: 0.20;
+    `,
+  })}
 `
 
 export const ButtonFilledTitle = styled.Text`
