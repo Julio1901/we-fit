@@ -10,7 +10,7 @@ import {getReposEndPoint } from "../../network/endpoints";
 import { Animated, Easing } from 'react-native';
 import { useEffect, useState } from "react";
 import BottomSearchComponent from "../../componentes/bottomSearchComponent/BottomSearchComponent";
-import { GitHubRepository } from "../../repositoryies/GitHubRepository";
+import { GitHubRepository } from "../../repositories/GitHubRepository";
 
 
 
@@ -36,6 +36,8 @@ const ShowRepositoriesScreen : React.FC = () => {
     const fetchGitHubRepository = async () => {
         try{
           if(ownerName === '' && screenType === 'repositories'){
+            setRepositories([])
+            setShowEmptyStateMessage(true)
             return
           }else if (screenType === 'favorites') {
             const response = await GitHubRepository.getLocalRepositories()
@@ -46,11 +48,11 @@ const ShowRepositoriesScreen : React.FC = () => {
               setShowEmptyStateMessage(true)
             }
           
-          }else{
-            const response = await axios.get<IGitHubUserRepository[]>(getReposEndPoint(ownerName))
-            if(response.data.length !== 0){
+          }else {
+            const response = await GitHubRepository.getRemoteRepositories(ownerName)
+            if(response.length !== 0){
               setShowEmptyStateMessage(false)
-              setRepositories(response.data)
+              setRepositories(response)
             }else{
               setShowEmptyStateMessage(true)
             }
