@@ -10,7 +10,7 @@ const SplashScreen : React.FC = () =>{
     useEffect(() => {
        
         setTimeout(() => {
-            navigator.navigate('Home')
+            navigator.navigate('Home', {origin: 'splashScreen'})
         }, 1500); 
       }, []);
 

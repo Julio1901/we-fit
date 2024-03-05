@@ -1,5 +1,5 @@
 import { Text, FlatList, View, KeyboardAvoidingView, Platform, Keyboard } from "react-native"
-import { useNavigation, ParamListBase, useFocusEffect } from "@react-navigation/native"
+import { useNavigation, ParamListBase, useFocusEffect, RouteProp } from "@react-navigation/native"
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { EmptyScenarioContainer, MainContainer } from "./styles";
 import HeaderBarWithIcon from "../../componentes/headerBarWithIcon/HeaderBarWithSettingsIcon";
@@ -8,18 +8,16 @@ import BottomNavigationComponent, { BottomNavigationComponentType } from "../../
 import axios from "axios";
 import {getReposEndPoint } from "../../network/endpoints";
 import { Animated, Easing } from 'react-native';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BottomSearchComponent from "../../componentes/bottomSearchComponent/BottomSearchComponent";
 import { GitHubRepository } from "../../repositories/GitHubRepository";
 import React from "react";
 import Spinner from "react-native-loading-spinner-overlay";
 
-
-
-
 const ShowRepositoriesScreen : React.FC = () => {
     
   type ShowRepositoriesScreenType = 'repositories' | 'favorites' 
+
   const HOME_EMPTY_STATE_MESSAGE =  'Pesquise um usuário para ver seus repositórios'
   const FAVORITES_EMPTY_STATE_MESSAGE = 'Você não possui repositórios favoritados'
 
@@ -34,7 +32,9 @@ const ShowRepositoriesScreen : React.FC = () => {
   const [showEmptyStateMessate, setShowEmptyStateMessage] = useState(true)
   const [bottomNavigateType, setBottomNavigationType] = useState<BottomNavigationComponentType>("repositories")
   const [showLoadingMessage, setShowLoadingMessage] = useState(false)
-  
+  const origin = useRef<'splashScreen' | 'detailsScreen'>('splashScreen')
+
+
     const fetchGitHubRepository = async () => {
         setShowLoadingMessage(true)
         try{
@@ -82,8 +82,9 @@ const ShowRepositoriesScreen : React.FC = () => {
 
       useFocusEffect(
         React.useCallback(() => {
-          console.log('chamou')
-          if(screenType === 'favorites'){
+          console.log(origin)
+          if(origin.current === 'detailsScreen'){
+            console.log('entrou no if')
             getLocalData()
           }
         }, [])
@@ -131,6 +132,7 @@ const ShowRepositoriesScreen : React.FC = () => {
     }
 
     const handleWithCardPressed = (item : IGitHubUserRepository) => {
+      origin.current= 'detailsScreen'
       const itemJSON = JSON.stringify(item);
       navigator.navigate('Details', {repositoryJson: itemJSON});
     }

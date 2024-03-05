@@ -18,7 +18,7 @@ interface DetailsScreenProps {
 const DetailsScreen : React.FC<DetailsScreenProps> = ({route, buttonState}) => {
     const { repositoryJson } = route.params;
 
-    const navigator = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    const navigator = useNavigation<NativeStackNavigationProp<ParamListBase>>()
     const repository = JSON.parse(repositoryJson) as IGitHubUserRepository
     const [favoriteButtonType, setFavoriteButtonType] = useState<FavoriteButtonState>()
 
