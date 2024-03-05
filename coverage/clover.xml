@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709680045186" clover="3.2.0">
-  <project timestamp="1709680045186" name="All files">
-    <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="9" coveredelements="9" complexity="0" loc="8" ncloc="8" packages="2" files="3" classes="3"/>
+<coverage generated="1709681826712" clover="3.2.0">
+  <project timestamp="1709681826712" name="All files">
+    <metrics statements="60" coveredstatements="56" conditionals="12" coveredconditionals="5" methods="8" coveredmethods="4" elements="80" coveredelements="65" complexity="0" loc="60" ncloc="60" packages="5" files="12" classes="12"/>
     <package name="assets.icons">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="icon-back-arrow.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-back-arrow.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="icon-red-circle.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-red-circle.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
       <file name="icon-settings.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-settings.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="icon-star.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-star.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.componentes.bottomSearchComponent">
+      <metrics statements="20" coveredstatements="18" conditionals="3" coveredconditionals="1" methods="3" coveredmethods="1"/>
+      <file name="BottomSearchComponent.tsx" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/src/componentes/bottomSearchComponent/BottomSearchComponent.tsx">
+        <metrics statements="6" coveredstatements="4" conditionals="3" coveredconditionals="1" methods="3" coveredmethods="1"/>
+        <line num="10" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+      </file>
+      <file name="styles.ts" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/src/componentes/bottomSearchComponent/styles.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
+        <line num="119" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.componentes.headerBackComponent">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="HeaderBackComponent.tsx" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/src/componentes/headerBackComponent/HeaderBackComponent.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="styles.ts" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/src/componentes/headerBackComponent/styles.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.componentes.headerBarWithIcon">
@@ -23,6 +79,38 @@
         <line num="18" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.componentes.repositoryCard">
+      <metrics statements="23" coveredstatements="21" conditionals="9" coveredconditionals="4" methods="3" coveredmethods="1"/>
+      <file name="RepositoryCard.tsx" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/src/componentes/repositoryCard/RepositoryCard.tsx">
+        <metrics statements="5" coveredstatements="3" conditionals="9" coveredconditionals="4" methods="3" coveredmethods="1"/>
+        <line num="12" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+      <file name="styles.ts" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/src/componentes/repositoryCard/styles.ts">
+        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="105" count="1" type="stmt"/>
+        <line num="110" count="1" type="stmt"/>
+        <line num="117" count="1" type="stmt"/>
+        <line num="123" count="1" type="stmt"/>
+        <line num="130" count="1" type="stmt"/>
+        <line num="136" count="1" type="stmt"/>
+        <line num="141" count="1" type="stmt"/>
       </file>
     </package>
   </project>
