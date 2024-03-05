@@ -1,4 +1,4 @@
-import { Text, FlatList, View } from "react-native"
+import { Text, FlatList, View, KeyboardAvoidingView, Platform, Keyboard } from "react-native"
 import { useNavigation, ParamListBase, useFocusEffect } from "@react-navigation/native"
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { EmptyScenarioContainer, MainContainer } from "./styles";
@@ -135,6 +135,13 @@ const ShowRepositoriesScreen : React.FC = () => {
       navigator.navigate('Details', {repositoryJson: itemJSON});
     }
 
+    useEffect(() => {
+      if(!isBottomSheetOpen){
+        Keyboard.dismiss()
+      }
+     
+    }, [isBottomSheetOpen])
+
     return (
         <MainContainer>
           <Spinner
@@ -150,11 +157,13 @@ const ShowRepositoriesScreen : React.FC = () => {
                   contentContainerStyle={{ paddingBottom: 16}}
                   />
               )}
-              <Animated.View style={{ height: bottomSheetHeight, backgroundColor: 'rgba(52, 52, 52, 0.8)', borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
-                    <View style={{ marginTop: isBottomSheetOpen ? 0 : 200 }}>
-                      <BottomSearchComponent onCancelPressed={handleBottomSheetToggle} onSavePressed={handleWithSaveButtonPressed} bottomSheetIsOpen={isBottomSheetOpen}/>
-                    </View>
-              </Animated.View>
+              <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+                <Animated.View style={{ height: bottomSheetHeight, backgroundColor: 'rgba(52, 52, 52, 0.8)', borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
+                  <View style={{ marginTop: isBottomSheetOpen ? 0 : 200 }}>
+                    <BottomSearchComponent onCancelPressed={handleBottomSheetToggle} onSavePressed={handleWithSaveButtonPressed} bottomSheetIsOpen={isBottomSheetOpen}/>
+                  </View>
+                 </Animated.View>
+              </KeyboardAvoidingView>
              {!isBottomSheetOpen ? ( <BottomNavigationComponent type={bottomNavigateType} onFavoriteButtonClicked={handleWithBottomMenuFavoritesButtonPressed} onRepositoriesButtonClicked={handleWithBottomMenuRepositoriesButtonPressed} />) : null} 
         </MainContainer>
     )
