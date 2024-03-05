@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709681826712" clover="3.2.0">
-  <project timestamp="1709681826712" name="All files">
-    <metrics statements="60" coveredstatements="56" conditionals="12" coveredconditionals="5" methods="8" coveredmethods="4" elements="80" coveredelements="65" complexity="0" loc="60" ncloc="60" packages="5" files="12" classes="12"/>
+<coverage generated="1709682072754" clover="3.2.0">
+  <project timestamp="1709682072754" name="All files">
+    <metrics statements="74" coveredstatements="70" conditionals="12" coveredconditionals="5" methods="9" coveredmethods="5" elements="95" coveredelements="80" complexity="0" loc="74" ncloc="74" packages="6" files="18" classes="18"/>
     <package name="assets.icons">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="icon-back-arrow.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-back-arrow.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="icon-git-hub-blue.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-git-hub-blue.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="icon-git-hub-grey.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-git-hub-grey.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
@@ -16,9 +24,36 @@
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
+      <file name="icon-star-blue.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-star-blue.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="icon-star-gray.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-star-gray.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
       <file name="icon-star.png" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/assets/icons/icon-star.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.componentes.bottomNavigationComponent">
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="BottomNavigationComponent.tsx" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/src/componentes/bottomNavigationComponent/BottomNavigationComponent.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+      </file>
+      <file name="styles.ts" path="/Users/juliocesar/Documents/projects/reactNative/expo/we-fit/src/componentes/bottomNavigationComponent/styles.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.componentes.bottomSearchComponent">

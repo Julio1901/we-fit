@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/componentes/bottomSearchComponent/BottomSearchComponent.tsx</title>
+    <title>Code coverage report for src/componentes/bottomNavigationComponent/BottomNavigationComponent.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/componentes/bottomSearchComponent</a> BottomSearchComponent.tsx</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/componentes/bottomNavigationComponent</a> BottomNavigationComponent.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,15 +113,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,57 +131,62 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from "react";
-import { BottomUnderline, ButtonFilled, ButtonFilledTitle, ButtonText, ButtonTextTitle, ButtonsContainer, DraggableView, HeaderContainer, MainContainer, Overlay, SearchComponentTitle, SearchInputText, SearchInputTextContainer, SearchInputTextTitle } from "./styles";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FavoritesButtonContainer, FavoritesText, IconGitHub, IconStar, MainContainer, RepositoriesButtonContainer, RepositoriesText } from "./styles";
 &nbsp;
-interface IBottomSearchComponentProps {
-    onCancelPressed : () =&gt; void;
-    onSavePressed : (value: string) =&gt; void;
-    bottomSheetIsOpen : boolean;
+export type BottomNavigationComponentType = "repositories" | "favorites" ;
+&nbsp;
+interface IBottomNavigationComponentProps {
+    type: BottomNavigationComponentType;
+    onFavoriteButtonClicked : () =&gt; void;
+    onRepositoriesButtonClicked: () =&gt; void;
 }
 &nbsp;
-const BottomSearchComponent : React.FC&lt;IBottomSearchComponentProps&gt; = ({onCancelPressed, onSavePressed, bottomSheetIsOpen = <span class="branch-0 cbranch-no" title="branch not covered" >false}</span>) =&gt; {
+const BottomNavigationComponent : React.FC&lt;IBottomNavigationComponentProps&gt; = ({type, onFavoriteButtonClicked, onRepositoriesButtonClicked}) =&gt; {
 &nbsp;
-    const [inputValue, setInputValue] = useState&lt;string&gt;('');
+    const buttonsConfigs = {
+        repositories: {
+          gitHub: require('../../../assets/icons/icon-git-hub-blue.png'),
+          star: require('../../../assets/icons/icon-star-gray.png'),
+          repositoriesTextColor : "#1976D2",
+          favoritesTextColor: "#00000099"
+        },
+        favorites: {
+          gitHub: require('../../../assets/icons/icon-git-hub-grey.png'),
+          star: require('../../../assets/icons/icon-star-blue.png'),
+          repositoriesTextColor : "#00000099",
+          favoritesTextColor: "#1976D2"
+        }
+      };
 &nbsp;
-    const handleWithInputValueChange = <span class="fstat-no" title="function not covered" >(v</span>alue : string) =&gt; {
-<span class="cstat-no" title="statement not covered" >        setInputValue(value)    </span>
-    }
-&nbsp;
-    return (
+    return(
         &lt;MainContainer&gt;
-            {bottomSheetIsOpen ? (&lt;Overlay/&gt;) : <span class="branch-1 cbranch-no" title="branch not covered" >null}</span>
-            &lt;HeaderContainer&gt;
-                &lt;DraggableView/&gt;
-            &lt;/HeaderContainer&gt;
-            &lt;SearchComponentTitle&gt;Alterar usuário selecionado&lt;/SearchComponentTitle&gt;
-            &lt;SearchInputTextContainer&gt;
-                &lt;SearchInputTextTitle&gt;Nome do usuário&lt;/SearchInputTextTitle&gt;
-                &lt;SearchInputText value={inputValue} onChangeText={handleWithInputValueChange}  /&gt; 
-                &lt;BottomUnderline/&gt;
-            &lt;/SearchInputTextContainer&gt;
-            &lt;ButtonsContainer&gt;
-                &lt;ButtonText onPress={onCancelPressed}&gt;
-                    &lt;ButtonTextTitle&gt;CANCELAR&lt;/ButtonTextTitle&gt;
-                &lt;/ButtonText&gt;
-                &lt;ButtonFilled onPress={ <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onSavePressed(inputValue)}</span>&gt;
-                    &lt;ButtonFilledTitle&gt;SALVAR&lt;/ButtonFilledTitle&gt;
-                &lt;/ButtonFilled&gt;
-            &lt;/ButtonsContainer&gt;
+            &lt;RepositoriesButtonContainer onPress={onRepositoriesButtonClicked}&gt;
+                &lt;IconGitHub source={buttonsConfigs[type].gitHub}/&gt;
+                &lt;RepositoriesText style={{ color: buttonsConfigs[type].repositoriesTextColor}}&gt;Repositórios&lt;/RepositoriesText&gt;
+            &lt;/RepositoriesButtonContainer&gt;
+            &lt;FavoritesButtonContainer onPress={onFavoriteButtonClicked}&gt;
+                &lt;IconStar source={buttonsConfigs[type].star}/&gt;
+                &lt;FavoritesText style={{ color: buttonsConfigs[type].favoritesTextColor}}&gt;Favoritos&lt;/FavoritesText&gt;
+            &lt;/FavoritesButtonContainer&gt;
         &lt;/MainContainer&gt;
     )
 }
 &nbsp;
-export default BottomSearchComponent;</pre></td></tr></table></pre>
+export default BottomNavigationComponent;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
