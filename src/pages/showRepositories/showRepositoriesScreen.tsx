@@ -82,7 +82,8 @@ const ShowRepositoriesScreen : React.FC = () => {
 
       useFocusEffect(
         React.useCallback(() => {
-          if(!(ownerName === '' && screenType === 'repositories')){
+          console.log('chamou')
+          if(screenType === 'favorites'){
             getLocalData()
           }
         }, [])
