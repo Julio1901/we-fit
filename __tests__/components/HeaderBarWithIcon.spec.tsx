@@ -6,7 +6,7 @@ import {  render } from '@testing-library/react-native'
 
 describe('HeaderBarWithIcon', () => {
     it('Should render title correctly', () => {
-      const { getByText } = render(<HeaderBarWithIcon title="Some Title Here" icon={require('../../assets/icons/icon-settings.png')}/>);
+      const { getByText } = render(<HeaderBarWithIcon title="Some Title Here" icon={require('../../assets/icons/icon-settings.png')} onIconPressed={() =>{}}/>);
       expect(getByText('Some Title Here')).toBeDefined();
     });
   });
