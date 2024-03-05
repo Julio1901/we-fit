@@ -84,12 +84,16 @@ const ShowRepositoriesScreen : React.FC = () => {
     } 
 
     const handleWithFavoriteButtonPressed = (repository: IGitHubUserRepository) => {
-      console.log('favorite button pressed')
-      console.log(repository)
       GitHubRepository.saveLocalRepository(repository)
+      removeRepositoryById(repository.id)
     }
 
-
+    const removeRepositoryById = (idToRemove: number) => {
+      if (repositories) {
+        const updatedRepositories = repositories.filter(repo => repo.id !== idToRemove);
+        setRepositories(updatedRepositories);
+      }
+    };
 
   //TODO: Remove message for her to handle with request delay when screen change
     const handleWithBottomMenuFavoritesButtonPressed = () =>{
@@ -115,7 +119,7 @@ const ShowRepositoriesScreen : React.FC = () => {
               {showEmptyStateMessate? (<EmptyScenarioContainer><Text>{emptyStateMessage}</Text></EmptyScenarioContainer>) : (
                                 <FlatList
                                 data={repositories}
-                                renderItem={({ item }) => <RepositoryCard showFavoriteButton={true} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed} onCardPressed={() => handleWithCardPressed(item)}/>}
+                                renderItem={({ item }) => <RepositoryCard showFavoriteButton={screenType === 'repositories' ? true : false} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed} onCardPressed={() => handleWithCardPressed(item)}/>}
                                 keyExtractor={item => item.id.toString()}
                                 
                             />
