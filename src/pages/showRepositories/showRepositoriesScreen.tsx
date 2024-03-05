@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import BottomSearchComponent from "../../componentes/bottomSearchComponent/BottomSearchComponent";
 import { GitHubRepository } from "../../repositories/GitHubRepository";
 import React from "react";
+import Spinner from "react-native-loading-spinner-overlay";
 
 
 
@@ -32,14 +33,15 @@ const ShowRepositoriesScreen : React.FC = () => {
   const [emptyStateMessage, setEmptyStateMessage] = useState(HOME_EMPTY_STATE_MESSAGE)
   const [showEmptyStateMessate, setShowEmptyStateMessage] = useState(true)
   const [bottomNavigateType, setBottomNavigationType] = useState<BottomNavigationComponentType>("repositories")
-
+  const [showLoadingMessage, setShowLoadingMessage] = useState(false)
   
     const fetchGitHubRepository = async () => {
-      console.log('PASSOU NO FETCH')
+        setShowLoadingMessage(true)
         try{
           if(ownerName === '' && screenType === 'repositories'){
             setRepositories([])
             setShowEmptyStateMessage(true)
+            setShowLoadingMessage(false)
             return
           }else if (screenType === 'favorites') {
             getLocalData()
@@ -55,20 +57,19 @@ const ShowRepositoriesScreen : React.FC = () => {
           }
           
         }catch(error){
-              console.error('Error when making request:', error);
+            setShowLoadingMessage(false)
+            console.error('Error when making request:', error);
         }
+        setShowLoadingMessage(false)
     }
-
 
       useEffect(() => {
          fetchGitHubRepository()
       }, [ownerName, screenType]);
 
-      useFocusEffect(() => {
-        
-      });
 
       const getLocalData = async () => {
+        setShowLoadingMessage(true)
         const response = await GitHubRepository.getLocalRepositories()
             if(response.length !== 0){
               setShowEmptyStateMessage(false)
@@ -76,11 +77,14 @@ const ShowRepositoriesScreen : React.FC = () => {
             }else{
               setShowEmptyStateMessage(true)
             }
+        setShowLoadingMessage(false)
       }
 
       useFocusEffect(
         React.useCallback(() => {
-          getLocalData()
+          if(!(ownerName === '' && screenType === 'repositories')){
+            getLocalData()
+          }
         }, [])
       );
 
@@ -132,6 +136,10 @@ const ShowRepositoriesScreen : React.FC = () => {
 
     return (
         <MainContainer>
+          <Spinner
+            visible={showLoadingMessage}
+            textContent="Carregando..."
+          />
             <HeaderBarWithIcon title="WeFit" icon={settingsIcon} onIconPressed={handleBottomSheetToggle}/>
               {showEmptyStateMessate? (<EmptyScenarioContainer><Text>{emptyStateMessage}</Text></EmptyScenarioContainer>) : (
                                 <FlatList
