@@ -5,7 +5,7 @@ export const MainContainer = styled.View`
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     background-color: #FFFFFF;
-    z-index: 1; 
+    z-index: 1;
 `
 
 export const HeaderContainer = styled.View`
