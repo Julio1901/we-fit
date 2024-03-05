@@ -14,10 +14,10 @@ export const MainContainer = styled.TouchableOpacity`
       shadow-color: #000000;
       shadow-offset: 0px 1px;
       shadow-opacity: 0.25;
-      shadow-radius: 4px;
+      shadow-radius: 10px;
     `,
     android: `
-      elevation: 4;
+      elevation: 10;
       shadow-color: #000000;
       shadow-opacity: 0.25;
     `,

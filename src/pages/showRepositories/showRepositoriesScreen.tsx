@@ -143,12 +143,12 @@ const ShowRepositoriesScreen : React.FC = () => {
           />
             <HeaderBarWithIcon title="WeFit" icon={settingsIcon} onIconPressed={handleBottomSheetToggle}/>
               {showEmptyStateMessate? (<EmptyScenarioContainer><Text>{emptyStateMessage}</Text></EmptyScenarioContainer>) : (
-                                <FlatList
-                                data={repositories}
-                                renderItem={({ item }) => <RepositoryCard showFavoriteButton={screenType === 'repositories' ? true : false} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed} onCardPressed={() => handleWithCardPressed(item)}/>}
-                                keyExtractor={item => item.id.toString()}
-                                
-                            />
+                  <FlatList
+                  data={repositories}
+                  renderItem={({ item }) => <RepositoryCard showFavoriteButton={screenType === 'repositories' ? true : false} item={item} onFavoriteButtonPressed={handleWithFavoriteButtonPressed} onCardPressed={() => handleWithCardPressed(item)}/>}
+                  keyExtractor={item => item.id.toString()}
+                  contentContainerStyle={{ paddingBottom: 16}}
+                  />
               )}
               <Animated.View style={{ height: bottomSheetHeight, backgroundColor: 'rgba(52, 52, 52, 0.8)', borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
                     <View style={{ marginTop: isBottomSheetOpen ? 0 : 200 }}>
