@@ -1,35 +1,33 @@
 import { ParamListBase, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import HeaderBackComponent from "../../componentes/headerBackComponent/HeaderBackComponent";
-import { BodyContainer, BottomButtonsContainer, Description, FavoriteButton, FavoriteButtonIcon, FavoriteButtonText, LanguageCircleIcon, LanguageContainer, MainContainer, SeeRepositoryButton, SeeRepositoryButtonContentContainer, SeeRepositoryButtonIcon, SeeRepositoryButtonText, TitleContainer, TitleOwner, TitleRepositoryName } from "./styles";
+import { BodyContainer, BottomButtonsContainer, Description, FavoriteButton, FavoriteButtonIcon, FavoriteButtonText, LanguageCircleIcon, LanguageContainer, MainContainer, SeeRepositoryButton, SeeRepositoryButtonContentContainer, SeeRepositoryButtonIcon, SeeRepositoryButtonText, TitleContainer, TitleOwner, TitleRepositoryName, UnfavoriteButton } from "./styles";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { LanguageTitle } from "../../componentes/repositoryCard/styles";
 import { RootStackParamList } from "../../../App";
 import { Linking } from 'react-native';
+import { useState } from "react";
 
-// type FavoriteButtonState = "favorite" | "unfavorite"
+ type FavoriteButtonState = "favorite" | "unfavorite"
 
 interface DetailsScreenProps {
     route: RouteProp<RootStackParamList, 'Details'>;
+    buttonState: FavoriteButtonState
 }
 
-const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
+const DetailsScreen : React.FC<DetailsScreenProps> = ({route, buttonState}) => {
     const { repositoryJson } = route.params;
 
     const navigator = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const repository = JSON.parse(repositoryJson) as IGitHubUserRepository
+    const [favoriteButtonType, setFavoriteButtonType] = useState<FavoriteButtonState>()
 
-    // const favoriteButtonConfigs = {
-    //     favorite : {
-    //         backGroundColor: '#FFD02C',
-    //         text: 'Favoritar',
-    //         icon: require('./../../../assets/icons/icon-star-black.png')
-    //     },
-    //     unfavorite : {
-    //         backGroundColor: "#FFFFFF",
-    //         text: 'Desfavoritar',
-    //         icon: require('./../../../assets/icons/icon-start-not-fill.png')
-    //     }
-    // }
+    const handleWithfavoriteButtonState = () => {
+        if(favoriteButtonType === 'favorite'){
+            setFavoriteButtonType('unfavorite')
+        }else{
+            setFavoriteButtonType('favorite')
+        }
+    }
 
     const handleWithBackButtonPressed = () =>{
         navigator.navigate('Home')
@@ -37,6 +35,10 @@ const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
     
     const handleWithSeeRepositoryClicked = () =>{
         Linking.openURL(repository.html_url)
+    }
+
+    const handleWithFavoriteButtonClicked = () => {
+        handleWithfavoriteButtonState()
     }
 
     return(
@@ -58,10 +60,21 @@ const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
                     <SeeRepositoryButtonText>Ver repositório</SeeRepositoryButtonText>
                     <SeeRepositoryButtonIcon source={require('./../../../assets/icons/icon-link.png')}/>
                 </SeeRepositoryButton>
-                <FavoriteButton>
-                    <FavoriteButtonText>Favoritar</FavoriteButtonText>
-                    <FavoriteButtonIcon  source={require('./../../../assets/icons/icon-star-black.png')}/>
-                </FavoriteButton>
+                {
+                    favoriteButtonType === 'favorite' ? (
+                        <FavoriteButton onPress={handleWithFavoriteButtonClicked}>
+                            <FavoriteButtonText>Favoritar</FavoriteButtonText>
+                            <FavoriteButtonIcon  source={require('./../../../assets/icons/icon-star-black.png')}/>
+                        </FavoriteButton>
+                    ):
+                    (
+                        <UnfavoriteButton onPress={handleWithFavoriteButtonClicked}>
+                            <FavoriteButtonText>Desfavoritar</FavoriteButtonText>
+                            <FavoriteButtonIcon  source={require('./../../../assets/icons/icon-start-not-fill.png')}/>
+                        </UnfavoriteButton>
+                    )
+                }
+
             </BottomButtonsContainer>
         </MainContainer>
   

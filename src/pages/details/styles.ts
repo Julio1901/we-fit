@@ -117,8 +117,22 @@ export const FavoriteButton = styled.TouchableOpacity`
       shadow-opacity: 0.20;
     `,
   })}
-
 `
+
+
+export const UnfavoriteButton = styled.TouchableOpacity`
+    height: 42px;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 4px;
+    border: 1px solid #000000;
+    margin-top: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`
+
+
 
 export const FavoriteButtonText = styled.Text`
     font-family: 'Roboto-Medium';
