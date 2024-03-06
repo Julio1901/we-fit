@@ -30,12 +30,13 @@ const ShowRepositoriesScreen : React.FC = () => {
   const [showEmptyStateMessate, setShowEmptyStateMessage] = useState(true)
   const [bottomNavigateType, setBottomNavigationType] = useState<BottomNavigationComponentType>("repositories")
   const [showLoadingMessage, setShowLoadingMessage] = useState(false)
-  const origin = useRef<'splashScreen' | 'detailsScreen'>('splashScreen')
+  const origin = useRef('splashScreen')
+  const ownerNameFilter = useRef('')
 
     const fetchGitHubRepository = async () => {
         setShowLoadingMessage(true)
         try{
-          if(ownerName === '' && screenType === 'repositories'){
+          if(ownerName === '' && ownerNameFilter.current === '' && screenType === 'repositories'){
             setRepositories([])
             setShowEmptyStateMessage(true)
             setShowLoadingMessage(false)
@@ -43,7 +44,7 @@ const ShowRepositoriesScreen : React.FC = () => {
           }else if (screenType === 'favorites') {
             getLocalData()
           }else {
-            const response = await GitHubRepository.getRemoteRepositories(ownerName)
+            const response = await GitHubRepository.getRemoteRepositories(ownerNameFilter.current)
             if(response.length !== 0){
               setShowEmptyStateMessage(false)
               setRepositories(response)
@@ -76,8 +77,10 @@ const ShowRepositoriesScreen : React.FC = () => {
 
       useFocusEffect(
         React.useCallback(() => {
-          if(origin.current === 'detailsScreen'){
+          if(origin.current === 'detailsScreenfavorites'){
             getLocalData()
+          }else{
+            fetchGitHubRepository()
           }
         }, [])
       );
@@ -96,6 +99,7 @@ const ShowRepositoriesScreen : React.FC = () => {
     const handleWithSaveButtonPressed = (value: string) => {  
       handleBottomSheetToggle()
       setOwnerName(value)
+      ownerNameFilter.current = value
     } 
 
     const handleWithFavoriteButtonPressed = (repository: IGitHubUserRepository) => {
@@ -123,7 +127,7 @@ const ShowRepositoriesScreen : React.FC = () => {
     }
 
     const handleWithCardPressed = (item : IGitHubUserRepository) => {
-      origin.current= 'detailsScreen'
+      origin.current= `detailsScreen${screenType}`
       const itemJSON = JSON.stringify(item);
       navigator.navigate('Details', {repositoryJson: itemJSON});
     }
