@@ -8,19 +8,19 @@ import { Linking } from 'react-native';
 import { useState } from "react";
 import { GitHubRepository } from "../../repositories/GitHubRepository";
 
- type FavoriteButtonState = "favorite" | "unfavorite"
+export type FavoriteButtonState = "favorite" | "unfavorite"
 
 interface DetailsScreenProps {
     route: RouteProp<RootStackParamList, 'Details'>;
     buttonState: FavoriteButtonState
 }
 
-const DetailsScreen : React.FC<DetailsScreenProps> = ({route, buttonState}) => {
-    const { repositoryJson } = route.params;
+const DetailsScreen : React.FC<DetailsScreenProps> = ({route}) => {
+    const { repositoryJson, buttonState } = route.params;
 
     const navigator = useNavigation<NativeStackNavigationProp<ParamListBase>>()
     const repository = JSON.parse(repositoryJson) as IGitHubUserRepository
-    const [favoriteButtonType, setFavoriteButtonType] = useState<FavoriteButtonState>()
+    const [favoriteButtonType, setFavoriteButtonType] = useState<FavoriteButtonState>(buttonState)
 
     const handleWithfavoriteButtonState = () => {
         if(favoriteButtonType === 'favorite'){

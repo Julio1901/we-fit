@@ -77,6 +77,7 @@ const ShowRepositoriesScreen : React.FC = () => {
 
       useFocusEffect(
         React.useCallback(() => {
+         
           if(origin.current === 'detailsScreenfavorites'){
             getLocalData()
           }else{
@@ -129,7 +130,8 @@ const ShowRepositoriesScreen : React.FC = () => {
     const handleWithCardPressed = (item : IGitHubUserRepository) => {
       origin.current= `detailsScreen${screenType}`
       const itemJSON = JSON.stringify(item);
-      navigator.navigate('Details', {repositoryJson: itemJSON});
+      const buttonState = screenType === 'repositories' ? 'favorite' : 'unfavorite';
+      navigator.navigate('Details', {repositoryJson: itemJSON, buttonState: buttonState});
     }
 
     useEffect(() => {

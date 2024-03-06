@@ -3,13 +3,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ShowRepositoriesScreen from './src/pages/showRepositories/showRepositoriesScreen';
 import {useFonts} from 'expo-font'
 import { View, Text } from 'react-native';
-import DetailsScreen from './src/pages/details/Details';
+import DetailsScreen, { FavoriteButtonState } from './src/pages/details/Details';
 import SplashScreen from './src/componentes/splashScreen/SplashScreen';
 
 
 export type RootStackParamList = {
   Home: undefined;
-  Details: {repositoryJson: string};
+  Details: {repositoryJson: string, buttonState: FavoriteButtonState};
 };
 
 const Stack = createNativeStackNavigator();
