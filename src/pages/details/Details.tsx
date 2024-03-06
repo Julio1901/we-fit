@@ -1,6 +1,6 @@
-import { ParamListBase, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { ParamListBase, RouteProp, useNavigation } from "@react-navigation/native";
 import HeaderBackComponent from "../../componentes/headerBackComponent/HeaderBackComponent";
-import { BodyContainer, BottomButtonsContainer, Description, FavoriteButton, FavoriteButtonIcon, FavoriteButtonText, LanguageCircleIcon, LanguageContainer, MainContainer, SeeRepositoryButton, SeeRepositoryButtonContentContainer, SeeRepositoryButtonIcon, SeeRepositoryButtonText, TitleContainer, TitleOwner, TitleRepositoryName, UnfavoriteButton } from "./styles";
+import { BodyContainer, BottomButtonsContainer, Description, FavoriteButton, FavoriteButtonIcon, FavoriteButtonText, LanguageCircleIcon, LanguageContainer, MainContainer, SeeRepositoryButton, SeeRepositoryButtonIcon, SeeRepositoryButtonText, TitleContainer, TitleOwner, TitleRepositoryName, UnfavoriteButton } from "./styles";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { LanguageTitle } from "../../componentes/repositoryCard/styles";
 import { RootStackParamList } from "../../../App";

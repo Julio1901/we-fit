@@ -1,12 +1,10 @@
 import { Text, FlatList, View, KeyboardAvoidingView, Platform, Keyboard } from "react-native"
-import { useNavigation, ParamListBase, useFocusEffect, RouteProp } from "@react-navigation/native"
+import { useNavigation, ParamListBase, useFocusEffect } from "@react-navigation/native"
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { EmptyScenarioContainer, MainContainer } from "./styles";
 import HeaderBarWithIcon from "../../componentes/headerBarWithIcon/HeaderBarWithSettingsIcon";
 import RepositoryCard from "../../componentes/repositoryCard/RepositoryCard";
 import BottomNavigationComponent, { BottomNavigationComponentType } from "../../componentes/bottomNavigationComponent/BottomNavigationComponent";
-import axios from "axios";
-import {getReposEndPoint } from "../../network/endpoints";
 import { Animated, Easing } from 'react-native';
 import { useEffect, useRef, useState } from "react";
 import BottomSearchComponent from "../../componentes/bottomSearchComponent/BottomSearchComponent";
@@ -34,7 +32,6 @@ const ShowRepositoriesScreen : React.FC = () => {
   const [showLoadingMessage, setShowLoadingMessage] = useState(false)
   const origin = useRef<'splashScreen' | 'detailsScreen'>('splashScreen')
 
-
     const fetchGitHubRepository = async () => {
         setShowLoadingMessage(true)
         try{
@@ -53,9 +50,7 @@ const ShowRepositoriesScreen : React.FC = () => {
             }else{
               setShowEmptyStateMessage(true)
             }
-          
           }
-          
         }catch(error){
             setShowLoadingMessage(false)
             console.error('Error when making request:', error);
@@ -66,7 +61,6 @@ const ShowRepositoriesScreen : React.FC = () => {
       useEffect(() => {
          fetchGitHubRepository()
       }, [ownerName, screenType]);
-
 
       const getLocalData = async () => {
         setShowLoadingMessage(true)
@@ -82,9 +76,7 @@ const ShowRepositoriesScreen : React.FC = () => {
 
       useFocusEffect(
         React.useCallback(() => {
-          console.log(origin)
           if(origin.current === 'detailsScreen'){
-            console.log('entrou no if')
             getLocalData()
           }
         }, [])
@@ -117,8 +109,7 @@ const ShowRepositoriesScreen : React.FC = () => {
         setRepositories(updatedRepositories);
       }
     };
-
-  //TODO: Remove message for her to handle with request delay when screen change
+    
     const handleWithBottomMenuFavoritesButtonPressed = () =>{
       setScreenType('favorites')
       setBottomNavigationType('favorites')

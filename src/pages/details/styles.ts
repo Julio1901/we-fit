@@ -132,8 +132,6 @@ export const UnfavoriteButton = styled.TouchableOpacity`
     justify-content: center;
 `
 
-
-
 export const FavoriteButtonText = styled.Text`
     font-family: 'Roboto-Medium';
     font-size: 15px;
